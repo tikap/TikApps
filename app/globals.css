@@ -17,11 +17,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-header {
-  color: white;
-}
-
-footer {
-  color: white
-}
