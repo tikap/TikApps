@@ -1,24 +1,17 @@
-// These styles apply to every route in the application
+// Styles
 import './globals.css'
 
-// Link import
-import Link from 'next/link'
+// Components
+import Header from './header/header.js'
+import Footer from './footer/footer.js'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <h1>Header</h1>
-          <Link href="/">Home</Link>
-          <Link href="/bmi"> BMI</Link>
-        </header>
-        
+        <Header />
         {children}
-        
-        <footer>
-          Footer
-        </footer>
+        <Footer />
       </body>
     </html>
   );
