@@ -8,16 +8,10 @@ import Footer from './footer/footer.js'
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body class="container mx-auto">
-        
+      <body>
         <Header />
-
-        <main>
-          {children}
-        </main>
-        
+        <main>{children}</main>
         <Footer />
-      
       </body>
     </html>
   );
