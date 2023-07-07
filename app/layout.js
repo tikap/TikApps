@@ -1,9 +1,9 @@
 // Styles
-import './globals.css'
+import "./globals.css";
 
 // Components
-import Header from './header/header.js'
-import Footer from './footer/footer.js'
+import Header from "./components/header.js";
+import Footer from "./components/footer.js";
 
 export default function RootLayout({ children }) {
   return (
