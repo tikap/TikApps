@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header>
       <nav
-        class="relative flex w-full items-center justify-between bg-black py-2 text-neutral-200 shadow-lg hover:text-neutral-400 focus:text-neutral-700 md:flex-wrap md:justify-start "
+        class="relative flex w-full items-center justify-between bg-gray-800 py-2 text-neutral-200 shadow-lg hover:text-neutral-400 focus:text-neutral-700 md:flex-wrap md:justify-start "
         data-te-navbar-ref
       >
         <div class="flex w-full flex-wrap items-center justify-between px-3">
