@@ -1,3 +1,7 @@
 export default function Bmi() {
-  return <h1>BMI Page.</h1>;
+  return (
+    <>
+      <h2 class="mb-4 text-4xl font-semibold">Body Mass Index Calculator</h2>
+    </>
+  );
 }
