@@ -1,8 +1,17 @@
-export default function NumberInput({ inputLabel, inputUnit }) {
+export default function NumberInput({ label, unit }) {
   return (
-    <div class="m-4">
+    <div class="relative my-8">
       <label>
-        {inputLabel}: <input name="myInput" /> {inputUnit}
+        <span class="mx-2 text-sm">{label}:</span>
+        <input
+          name="numberInput"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="0.00"
+          class="w-auto rounded-md text-black text-center text-sm bg-gray-200 focus:bg-gray-100"
+        />
+        <span class="mx-2 text-sm">{unit}</span>
       </label>
     </div>
   );
