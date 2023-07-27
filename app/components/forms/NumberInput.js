@@ -1,7 +1,7 @@
 export default function NumberInput({ label, unit }) {
   return (
     <div class="relative my-8">
-      <label>
+      <label class="grid-cols-3">
         <span class="mx-2 text-sm">{label}:</span>
         <input
           name="numberInput"
