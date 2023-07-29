@@ -3,8 +3,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <h2 class="mb-4 text-4xl font-semibold">TikApps</h2>
-      <h4 class="mb-6 text-xl font-semibold">
+      <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
+      <h4 className="mb-6 text-xl font-semibold">
         Useful tools and utilities for your health.
       </h4>
 
@@ -13,7 +13,7 @@ export default function Home() {
           type="button"
           data-te-ripple-init
           data-te-ripple-color="light"
-          class="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
+          className="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
           text-neutral-300 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out 
           hover:bg-indigo-800 
           hover:text-neutral-100

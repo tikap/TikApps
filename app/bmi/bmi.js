@@ -13,14 +13,14 @@ export default function Bmi() {
 
   return (
     <div>
-      <h1 class="mx-8 text-xl font-semibold">Body Mass Index Calculator</h1>
+      <h1 className="mx-8 text-xl font-semibold">Body Mass Index Calculator</h1>
       <NumberInput label="Weight" unit="Kg" />
       <NumberInput label="Height" unit="cm" />
       <BmiCalculateButton
         label="Calculate"
         onBmiCalculateButtonClick={handleBmiCalculateButtonClick}
       />
-      <div class="m-8">{bmiResult}</div>
+      <div className="m-8">{bmiResult}</div>
     </div>
   );
 }

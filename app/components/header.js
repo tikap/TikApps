@@ -4,22 +4,22 @@ export default function Header() {
   return (
     <header>
       <nav
-        class="relative flex w-full items-center justify-between bg-gray-800 py-2 text-neutral-200 shadow-lg hover:text-neutral-400 focus:text-neutral-700"
+        className="relative flex w-full items-center justify-between bg-gray-800 py-2 text-neutral-200 shadow-lg hover:text-neutral-400 focus:text-neutral-700"
         data-te-navbar-ref
       >
-        <div class="flex w-full flex-wrap items-center justify-between px-3">
+        <div className="flex w-full flex-wrap items-center justify-between px-3">
           <div
-            class="!visible grow basis-[100%] items-center lg:!flex lg:basis-auto"
+            className="!visible grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContentY"
             data-te-collapse-item
           >
             <ul
-              class="mr-auto flex flex-col lg:flex-row"
+              className="mr-auto flex flex-col lg:flex-row"
               data-te-navbar-nav-ref
             >
-              <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
-                  class="block transition duration-150 ease-in-out 
+                  className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 
@@ -32,9 +32,9 @@ export default function Header() {
                   Home
                 </Link>
               </li>
-              <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
-                  class="block transition duration-150 ease-in-out 
+                  className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 
@@ -47,9 +47,9 @@ export default function Header() {
                   BMI Calculator
                 </Link>
               </li>
-              <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
-                  class="block transition duration-150 ease-in-out 
+                  className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 
@@ -62,9 +62,9 @@ export default function Header() {
                   About
                 </Link>
               </li>
-              <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
-                  class="block transition duration-150 ease-in-out 
+                  className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 

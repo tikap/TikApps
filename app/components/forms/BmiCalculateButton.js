@@ -6,12 +6,11 @@ export default function BmiCalculateButton({
 }) {
   return (
     <button
-      className="bmiCalculateButton"
       onClick={onBmiCalculateButtonClick}
       type="button"
       data-te-ripple-init
       data-te-ripple-color="light"
-      class="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
+      className="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
           text-neutral-200 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out 
           hover:bg-indigo-800 
           hover:text-neutral-100
