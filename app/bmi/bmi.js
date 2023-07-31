@@ -3,11 +3,13 @@
 import { useState } from "react";
 import BmiCalculateButton from "../components/forms/BmiCalculateButton";
 import NumberInput from "../components/forms/NumberInput";
+import BmiResult from "./bmiResult";
 
 export default function Bmi() {
   const [weightInput, setWeightInput] = useState(Number(0));
   const [heightInput, setHeightInput] = useState(Number(0));
   const [bmiResult, setBmiResult] = useState(Number(0));
+  const [bmiResultVisibility, setBmiResultVisibility] = useState(false);
 
   function handleWeightValueChange(event) {
     setWeightInput(event.target.value);
@@ -18,12 +20,18 @@ export default function Bmi() {
   }
 
   function handleBmiCalculateButtonClick() {
-    var result = 0;
     const height = Number(heightInput);
     const weight = Number(weightInput);
 
-    result = weight / height ** 2;
+    var result = weight / height ** 2;
+
+    result =
+      isNaN(result) || !isFinite(result)
+        ? "Invalid result. Please enter a valid weight and height."
+        : Math.round(result * 100) / 100; // Round to nearest 2 decimal places
+
     setBmiResult(result);
+    setBmiResultVisibility(true);
   }
 
   return (
@@ -33,17 +41,21 @@ export default function Bmi() {
         label="Weight"
         unit="Kg"
         onValueChange={handleWeightValueChange}
+        step="0.1"
       />
       <NumberInput
         label="Height"
         unit="m"
         onValueChange={handleHeightValueChange}
+        step="0.01"
       />
       <BmiCalculateButton
         label="Calculate"
         onBmiCalculateButtonClick={handleBmiCalculateButtonClick}
       />
-      <div className="m-8">{bmiResult}</div>
+      <div>
+        {bmiResultVisibility ? <BmiResult resultValue={bmiResult} /> : null}
+      </div>
     </div>
   );
 }
