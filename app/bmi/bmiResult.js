@@ -1,5 +1,5 @@
 export default function BmiResult({ resultValue }) {
-  var weightCategory = "";
+  var weightCategory;
 
   switch (true) {
     case resultValue >= 30:
@@ -15,7 +15,7 @@ export default function BmiResult({ resultValue }) {
       weightCategory = "Underweight";
       break;
     default:
-      weightCategory = "";
+      weightCategory = null;
   }
 
   return (

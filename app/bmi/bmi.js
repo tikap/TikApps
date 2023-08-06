@@ -4,6 +4,7 @@ import { useState } from "react";
 import BmiCalculateButton from "../components/forms/BmiCalculateButton";
 import NumberInput from "../components/forms/NumberInput";
 import BmiResult from "./bmiResult";
+import CollapsableContent from "../components/content/CollapsableContent";
 
 export default function Bmi() {
   const [weightInput, setWeightInput] = useState(Number(0));
@@ -55,6 +56,13 @@ export default function Bmi() {
       />
       <div>
         {bmiResultVisibility ? <BmiResult resultValue={bmiResult} /> : null}
+      </div>
+      <div>
+        <CollapsableContent
+          contentHeading="Limitations of BMI"
+          content="BMI does not account for age, race, ethnicity or muscle mass. 
+          Use this indicator as an estimate of where you fall in the population in terms of risk to heart health"
+        />
       </div>
     </div>
   );
