@@ -6,8 +6,8 @@ import Link from "next/link";
 export default function Header() {
   useEffect(() => {
     const init = async () => {
-      const { Collapse, Ripple, initTE } = await import("tw-elements");
-      initTE({ Collapse, Ripple });
+      const { Ripple, initTE } = await import("tw-elements");
+      initTE({ Ripple });
     };
     init();
   }, []);
@@ -19,16 +19,12 @@ export default function Header() {
         data-te-navbar-ref
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
-          <div
-            className="!visible grow basis-[100%] items-center lg:!flex lg:basis-auto"
-            id="navbarSupportedContentY"
-            data-te-collapse-item
-          >
+          <div className="!visible grow basis-[100%] items-center lg:!flex lg:basis-auto">
             <ul
-              className="mr-auto flex flex-col lg:flex-row"
+              className="mr-auto flex flex-wrap justify-center lg:flex-row"
               data-te-navbar-nav-ref
             >
-              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
@@ -43,7 +39,7 @@ export default function Header() {
                   Home
                 </Link>
               </li>
-              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
@@ -58,7 +54,7 @@ export default function Header() {
                   BMI Calculator
                 </Link>
               </li>
-              <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
@@ -73,7 +69,7 @@ export default function Header() {
                   About
                 </Link>
               </li>
-              <li className="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
