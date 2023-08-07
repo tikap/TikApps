@@ -1,6 +1,17 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Header() {
+  useEffect(() => {
+    const init = async () => {
+      const { Collapse, Ripple, initTE } = await import("tw-elements");
+      initTE({ Collapse, Ripple });
+    };
+    init();
+  }, []);
+
   return (
     <header>
       <nav

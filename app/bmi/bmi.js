@@ -1,11 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import BmiCalculateButton from "../components/forms/BmiCalculateButton";
-import NumberInput from "../components/forms/NumberInput";
-import BmiResult from "./bmiResult";
-import CollapsableContent from "../components/content/CollapsableContent";
+import dynamic from "next/dynamic";
 
+// Import sub components dynamically
+const NumberInput = dynamic(
+  () => import("../components/forms/NumberInput.js"),
+  {
+    loading: () => <p className="my-4">Loading...</p>,
+    ssr: false,
+  }
+);
+
+const BmiCalculateButton = dynamic(
+  () => import("../components/forms/BmiCalculateButton.js"),
+  {
+    loading: () => <p className="my-4">Loading...</p>,
+    ssr: false,
+  }
+);
+
+const BmiResult = dynamic(() => import("./bmiResult.js"), {
+  loading: () => <p className="my-4">Loading...</p>,
+  ssr: false,
+});
+
+const CollapsableContent = dynamic(
+  () => import("../components/content/CollapsableContent.js"),
+  {
+    loading: () => <p className="my-4">Loading...</p>,
+    ssr: false,
+  }
+);
+
+// Export this main component
 export default function Bmi() {
   const [weightInput, setWeightInput] = useState(Number(0));
   const [heightInput, setHeightInput] = useState(Number(0));

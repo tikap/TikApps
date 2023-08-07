@@ -1,6 +1,17 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
+  useEffect(() => {
+    const init = async () => {
+      const { Ripple, initTE } = await import("tw-elements");
+      initTE({ Ripple });
+    };
+    init();
+  }, []);
+
   return (
     <>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
