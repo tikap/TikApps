@@ -2,8 +2,8 @@ export default function NumberInput({
   label,
   unit,
   onValueChange,
-  minimum = 0,
-  maximum = 5000,
+  min = 0,
+  max = 5000,
   step = 0.1,
 }) {
   return (
@@ -14,8 +14,8 @@ export default function NumberInput({
           type="number"
           onChange={onValueChange}
           placeholder="0"
-          min={minimum}
-          max={maximum}
+          min={min}
+          max={max}
           step={step}
           className="w-32 rounded-md text-black text-center text-sm bg-gray-200 focus:bg-gray-100"
         />

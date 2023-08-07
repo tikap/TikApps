@@ -1,7 +1,11 @@
 "use client";
 import { useEffect } from "react";
 
-export default function CollapsableContent({ contentHeading, content }) {
+export default function CollapsableContent({
+  contentHeading,
+  content,
+  uniqueId = "collapseContentOne",
+}) {
   useEffect(() => {
     const init = async () => {
       const { Collapse, Ripple, initTE } = await import("tw-elements");
@@ -12,7 +16,7 @@ export default function CollapsableContent({ contentHeading, content }) {
 
   return (
     <div className="container my-8 mx-auto md:px-6 xl:px-24">
-      <section className="mb-32">
+      <section className="mb-8">
         <div id="accordionFlushExample">
           <div className="rounded-none border border-t-0 border-l-0 border-r-0 border-neutral-200">
             <h2 className="mb-0" id="flush-headingOne">
@@ -21,9 +25,9 @@ export default function CollapsableContent({ contentHeading, content }) {
                 type="button"
                 data-te-collapse-init
                 data-te-collapse-collapsed
-                data-te-target="#flush-collapseOne"
+                data-te-target={"#" + uniqueId}
                 aria-expanded="false"
-                aria-controls="flush-collapseOne"
+                aria-controls={uniqueId}
               >
                 {contentHeading}
                 <span className="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-[#8FAEE0] dark:group-[[data-te-collapse-collapsed]]:fill-[#eee]">
@@ -37,7 +41,7 @@ export default function CollapsableContent({ contentHeading, content }) {
               </button>
             </h2>
             <div
-              id="flush-collapseOne"
+              id={uniqueId}
               className="!visible hidden border-0"
               data-te-collapse-item
               aria-labelledby="flush-headingOne"
