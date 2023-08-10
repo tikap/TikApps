@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
       <h4 className="mb-6 text-xl font-semibold">
-        Useful tools for your daily health goals.
+        Tools for your daily health goals.
       </h4>
 
       <Link href="./about">

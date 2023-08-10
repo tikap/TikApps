@@ -1,3 +1,11 @@
 export default function Contact() {
-  return <h1>Contact page.</h1>;
+  return (
+    <>
+      <h4 className="mb-6 text-xl font-semibold">Contact Information</h4>
+      <p>
+        If you have new tool ideas, feature improvement suggestions, bug reports
+        and any other queries, please contact me using the email form below:
+      </p>
+    </>
+  );
 }

@@ -65,7 +65,7 @@ export default function Bmi() {
 
   return (
     <div>
-      <h1 className="mx-8 text-xl font-semibold">Body Mass Index Calculator</h1>
+      <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
       <NumberInput
         label="Weight"
         unit="Kg"
@@ -92,24 +92,24 @@ export default function Bmi() {
       <div>
         <CollapsableContent
           contentHeading="What does BMI Indicate?"
-          content="Ideally you would want to be under the normal BMI range. 
+          content="Ideally you would want to be within the normal BMI range. 
           Higher BMI categories (overweight and obese) indicate higher risk to cardiovascular diseases
           (heart attack, stroke, etc), diabetes, musculoskeletal disorders and some cancers. Likewise, the lower end of 
           BMI category (underweight) have a greater risks to health conditions like malnutrition, osteoporosis and 
           lowered immunity."
-          uniqueId="collapseContentOne"
+          uniqueId="collapseBmiIndications"
         />
       </div>
       <div>
         <CollapsableContent
-          contentHeading="Limitations of BMI scales"
+          contentHeading="Limitations of BMI"
           content="Use your Body Mass Index as a rule of thumb for where you fall in the health risk category,
           but note that it is not an actual medical prediction. 
           This index is known to have several limitations such as over-estimating bodies that are taller and more muscular,
           and under-estimating shorter and thinner bodies. The weight categorization has also varied over jurisdictions 
           and time. The current standard is set by the National Institution of Health (NIH) in 1998 and also echoed by
           the World Health Organization (WHO) over the 1990s."
-          uniqueId="collapseContentTwo"
+          uniqueId="collapsableBmiLimitations"
         />
       </div>
     </div>
