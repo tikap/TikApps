@@ -45,6 +45,10 @@ export default function Bmi() {
   }
 
   function handleHeightValueChange(event) {
+    let value = event.target.value;
+    if (value.length == 2) {
+      event.target.value = value.slice(0, 1) + "." + value.slice(1, 2);
+    }
     setHeightInput(event.target.value);
   }
 
