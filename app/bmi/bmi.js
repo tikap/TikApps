@@ -52,6 +52,12 @@ export default function Bmi() {
     setHeightInput(event.target.value);
   }
 
+  function handleKeyPressedOnHeightInput(event) {
+    if (event.key == "Enter") {
+      handleBmiCalculateButtonClick();
+    }
+  }
+
   function handleBmiCalculateButtonClick() {
     const height = Number(heightInput);
     const weight = Number(weightInput);
@@ -81,6 +87,7 @@ export default function Bmi() {
         label="Height"
         unit="m"
         onValueChange={handleHeightValueChange}
+        onKeyPressed={handleKeyPressedOnHeightInput}
         step="0.01"
         max="3"
       />

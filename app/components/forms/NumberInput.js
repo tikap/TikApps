@@ -2,6 +2,7 @@ export default function NumberInput({
   label,
   unit,
   onValueChange,
+  onKeyPressed,
   min = 0,
   max = 5000,
   step = 0.1,
@@ -13,6 +14,7 @@ export default function NumberInput({
         <input
           type="number"
           onChange={onValueChange}
+          onKeyDown={onKeyPressed}
           placeholder="0"
           min={min}
           max={max}
