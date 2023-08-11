@@ -47,7 +47,7 @@ export default function CollapsableContent({
               aria-labelledby="flush-headingOne"
               data-te-parent="#accordionFlushExample"
             >
-              <div className="py-4 px-5 text-neutral-500">{content}</div>
+              <div className="py-4 px-5 text-neutral-300">{content}</div>
             </div>
           </div>
         </div>

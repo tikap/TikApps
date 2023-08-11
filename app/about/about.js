@@ -8,10 +8,8 @@ export default function About() {
         <p className="my-4">
           A web application with simple utilities that will help keep track of
           your health. Feel free to explore and use the tools from the
-          navigation bar above.
-        </p>
-        <p className="my-4">
-          The list of currently available tools are given below:
+          navigation bar above. <br /> The current list of available tools are
+          given below:
         </p>
       </div>
       <div>
@@ -20,7 +18,7 @@ export default function About() {
           content="Body Mass Index (BMI) is an indicator that's calculated using your height
               and weight. This tool calculates your BMI and indicates if your result 
               falls under normal, underweight, overweight or obese categories as standardized
-              by the National Institution of Health and World Health Organization"
+              by the National Institution of Health and World Health Organization."
           uniqueId="collapsableBmiDetails"
         />
       </div>
