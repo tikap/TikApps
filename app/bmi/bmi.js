@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // Import sub components dynamically
@@ -39,6 +39,8 @@ export default function Bmi() {
   const [heightInput, setHeightInput] = useState(Number(0));
   const [bmiResult, setBmiResult] = useState(Number(0));
   const [bmiResultVisibility, setBmiResultVisibility] = useState(false);
+
+  const bmiResultElementRef = useRef(null);
 
   function handleWeightValueChange(event) {
     setWeightInput(event.target.value);
@@ -97,7 +99,12 @@ export default function Bmi() {
       />
 
       <div>
-        {bmiResultVisibility ? <BmiResult resultValue={bmiResult} /> : null}
+        {bmiResultVisibility ? (
+          <BmiResult
+            resultValue={bmiResult}
+            referenceToThisElement={bmiResultElementRef}
+          />
+        ) : null}
       </div>
 
       <div>

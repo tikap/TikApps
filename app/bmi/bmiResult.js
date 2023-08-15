@@ -1,7 +1,18 @@
-export default function BmiResult({ resultValue }) {
+import { useEffect } from "react";
+
+export default function BmiResult({ resultValue, referenceToThisElement }) {
+  useEffect(() => {
+    if (referenceToThisElement.current) {
+      referenceToThisElement.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, []);
+
   if (isNaN(resultValue)) {
     return (
-      <div className="flex justify-center">
+      <div ref={referenceToThisElement} className="flex justify-center">
         <div className="block w-128 p-2 my-4">{resultValue}</div>
       </div>
     );
@@ -35,7 +46,7 @@ export default function BmiResult({ resultValue }) {
   }
 
   return (
-    <div className="flex justify-center">
+    <div ref={referenceToThisElement} className="flex justify-center">
       <div className="w-128 p-2 my-4">
         <div className="block m-8">
           Your BMI:
