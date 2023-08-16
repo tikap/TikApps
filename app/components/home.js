@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
-      <h4 className="mb-6 text-xl font-semibold">
-        Free, easy and web accessible tools for your health.
+      <h4 className="mb-6 text-xl">
+        Free, easy and accessible tools for your health.
       </h4>
 
       <Link href="./about">
