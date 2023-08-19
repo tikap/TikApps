@@ -6,6 +6,7 @@ export default function NumberInput({
   min = 0,
   max = 5000,
   step = 0.1,
+  width = "w-32",
 }) {
   return (
     <div className="relative my-8">
@@ -19,7 +20,10 @@ export default function NumberInput({
           min={min}
           max={max}
           step={step}
-          className="w-32 h-6 rounded-md text-black text-center text-sm bg-gray-200 focus:bg-gray-100"
+          className={
+            width +
+            " h-6 rounded-md text-black text-center text-sm bg-gray-200 focus:bg-gray-100"
+          }
         />
         <span className="mx-2 text-sm">{unit}</span>
       </label>
