@@ -9,10 +9,12 @@ export default function NumberInput({
   width = "w-32",
 }) {
   return (
-    <div className="relative my-8">
+    <div className="relative mb-8">
       <label className="flex justify-center items-center">
         <span className="mx-2">{label}:</span>
         <input
+          id={label + "Id"}
+          name={label}
           type="number"
           onChange={onValueChange}
           onKeyDown={onKeyPressed}

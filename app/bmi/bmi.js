@@ -4,6 +4,14 @@ import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // Import sub components dynamically
+const RadioTwoOptions = dynamic(
+  () => import("../components/forms/RadioTwoOptions.js"),
+  {
+    loading: () => <p className="my-4">Loading...</p>,
+    ssr: false,
+  }
+);
+
 const NumberInput = dynamic(
   () => import("../components/forms/NumberInput.js"),
   {
@@ -78,21 +86,37 @@ export default function Bmi() {
   return (
     <div>
       <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
-      <NumberInput
-        label="Weight"
-        unit="Kg"
-        onValueChange={handleWeightValueChange}
-        step="1"
-        max="500"
-      />
-      <NumberInput
-        label="Height"
-        unit="m"
-        onValueChange={handleHeightValueChange}
-        onKeyPressed={handleKeyPressedOnHeightInput}
-        step="0.01"
-        max="3"
-      />
+      <div className="flex justify-center items-center">
+        <NumberInput
+          label="Weight"
+          onValueChange={handleWeightValueChange}
+          step="1"
+          max="500"
+          width="w-28"
+        />
+        <RadioTwoOptions
+          radioGroupName="weightUnitRadios"
+          optionOneName="Kg"
+          optionTwoName="lbs"
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <NumberInput
+          label="Height"
+          onValueChange={handleHeightValueChange}
+          onKeyPressed={handleKeyPressedOnHeightInput}
+          step="0.01"
+          max="3"
+          width="w-28"
+        />
+        <RadioTwoOptions
+          radioGroupName="heightUnitRadios"
+          optionOneName="m"
+          optionTwoName="ft/in"
+        />
+      </div>
+
       <BmiCalculateButton
         label="Calculate"
         onBmiCalculateButtonClick={handleBmiCalculateButtonClick}
