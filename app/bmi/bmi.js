@@ -113,7 +113,7 @@ export default function Bmi() {
         <RadioTwoOptions
           radioGroupName="heightUnitRadios"
           optionOneName="m"
-          optionTwoName="ft/in"
+          optionTwoName="ft / in"
         />
       </div>
 
