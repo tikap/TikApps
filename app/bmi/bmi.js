@@ -43,15 +43,33 @@ const CollapsableContent = dynamic(
 
 // Export this main component
 export default function Bmi() {
+  // User input and calculated output states
   const [weightInput, setWeightInput] = useState(Number(0));
   const [heightInput, setHeightInput] = useState(Number(0));
   const [bmiResult, setBmiResult] = useState(Number(0));
+
+  // Input unit states
+  const [isKilogram, setIsKilogram] = useState(true);
+  const [isMeter, setIsMeter] = useState(true);
+
+  // Visibility states
   const [bmiResultVisibility, setBmiResultVisibility] = useState(false);
 
+  // References
   const bmiResultElementRef = useRef(null);
 
+  // Event handlers
   function handleWeightValueChange(event) {
     setWeightInput(event.target.value);
+  }
+
+  function handleWeightUnitChange(event) {
+    if (event.target.value == "Kg") {
+      setIsKilogram(true);
+    }
+    if (event.target.value == "lbs") {
+      setIsKilogram(false);
+    }
   }
 
   function handleHeightValueChange(event) {
@@ -60,6 +78,15 @@ export default function Bmi() {
       event.target.value = value.slice(0, 1) + "." + value.slice(1, 2);
     }
     setHeightInput(event.target.value);
+  }
+
+  function handleHeightUnitChange(event) {
+    if (event.target.value == "m") {
+      setIsMeter(true);
+    }
+    if (event.target.value == "ft / in") {
+      setIsMeter(false);
+    }
   }
 
   function handleKeyPressedOnHeightInput(event) {
@@ -83,37 +110,76 @@ export default function Bmi() {
     setBmiResultVisibility(true);
   }
 
+  // BMI calculator JSX
   return (
     <div>
       <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
+
       <div className="flex justify-center items-center">
-        <NumberInput
-          label="Weight"
-          onValueChange={handleWeightValueChange}
-          step="1"
-          max="500"
-          width="w-28"
-        />
+        {isKilogram ? (
+          <NumberInput
+            label="Weight"
+            onValueChange={handleWeightValueChange}
+            step="1"
+            max="500"
+            width="w-28"
+            placeholder="Kilograms"
+          />
+        ) : (
+          <NumberInput
+            label="Weight"
+            onValueChange={handleWeightValueChange}
+            step="1"
+            max="500"
+            width="w-28"
+            placeholder="Pounds"
+          />
+        )}
         <RadioTwoOptions
           radioGroupName="weightUnitRadios"
           optionOneName="Kg"
           optionTwoName="lbs"
+          onOptionChanged={handleWeightUnitChange}
         />
       </div>
 
       <div className="flex justify-center items-center">
-        <NumberInput
-          label="Height"
-          onValueChange={handleHeightValueChange}
-          onKeyPressed={handleKeyPressedOnHeightInput}
-          step="0.01"
-          max="3"
-          width="w-28"
-        />
+        {isMeter ? (
+          <NumberInput
+            label="Height"
+            onValueChange={handleHeightValueChange}
+            onKeyPressed={handleKeyPressedOnHeightInput}
+            step="0.01"
+            max="3"
+            width="w-28"
+            placeholder="Meters"
+          />
+        ) : (
+          <>
+            <NumberInput
+              label="Height"
+              onValueChange={handleHeightValueChange}
+              onKeyPressed={handleKeyPressedOnHeightInput}
+              step="0.01"
+              max="3"
+              width="w-14"
+              placeholder="Feet"
+            />
+            <NumberInput
+              onValueChange={handleHeightValueChange}
+              onKeyPressed={handleKeyPressedOnHeightInput}
+              step="0.01"
+              max="3"
+              width="w-18"
+              placeholder="Inches"
+            />
+          </>
+        )}
         <RadioTwoOptions
           radioGroupName="heightUnitRadios"
           optionOneName="m"
           optionTwoName="ft / in"
+          onOptionChanged={handleHeightUnitChange}
         />
       </div>
 
