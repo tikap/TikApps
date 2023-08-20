@@ -139,6 +139,11 @@ export default function Bmi() {
   }
 
   function handleFootValueChange(event) {
+    let value = event.target.value;
+    if (value.length >= 1) {
+      let heightToFocus = document.getElementById("Inches");
+      heightToFocus?.focus();
+    }
     setFootInput(event.target.value);
   }
 
@@ -185,7 +190,8 @@ export default function Bmi() {
               onValueChange={handleKilogramValueChange}
               onKeyPressed={handleKeyPressedToGoNext}
               step="0.1"
-              max="500"
+              max="1000"
+              min="0"
               width="w-28"
               placeholder="Kilograms"
             />
@@ -195,7 +201,8 @@ export default function Bmi() {
               onValueChange={handlePoundValueChange}
               onKeyPressed={handleKeyPressedToGoNext}
               step="0.1"
-              max="500"
+              max="2000"
+              min="0"
               width="w-28"
               placeholder="Pounds"
             />
@@ -222,7 +229,8 @@ export default function Bmi() {
               onValueChange={handleMeterValueChange}
               onKeyPressed={handleKeyPressedToTriggerCalculate}
               step="0.01"
-              max="3"
+              max="9"
+              min="0"
               width="w-28"
               placeholder="Meters"
             />
@@ -232,8 +240,9 @@ export default function Bmi() {
                 label="Height"
                 onValueChange={handleFootValueChange}
                 onKeyPressed={handleKeyPressedToGoNext}
-                step="0.01"
-                max="3"
+                step="1"
+                max="10"
+                min="0"
                 width="w-14"
                 placeholder="Feet"
               />
@@ -242,7 +251,8 @@ export default function Bmi() {
                 onValueChange={handleInchValueChange}
                 onKeyPressed={handleKeyPressedToTriggerCalculate}
                 step="0.01"
-                max="3"
+                max="120"
+                min="0"
                 width="w-14"
                 placeholder="Inches"
               />
