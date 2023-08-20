@@ -152,12 +152,17 @@ export default function Bmi() {
       <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
 
       <div className="flex justify-center items-center">
-        <form id="weightInputs">
+        <form
+          id="weightInputs"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           {isKilogram ? (
             <NumberInput
               label="Weight"
               onValueChange={handleKilogramValueChange}
-              step="1"
+              step="0.1"
               max="500"
               width="w-28"
               placeholder="Kilograms"
@@ -166,7 +171,7 @@ export default function Bmi() {
             <NumberInput
               label="Weight"
               onValueChange={handlePoundValueChange}
-              step="1"
+              step="0.1"
               max="500"
               width="w-28"
               placeholder="Pounds"
@@ -182,7 +187,12 @@ export default function Bmi() {
       </div>
 
       <div className="flex justify-center items-center">
-        <form id="heightInputs">
+        <form
+          id="heightInputs"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           {isMeter ? (
             <NumberInput
               label="Height"
