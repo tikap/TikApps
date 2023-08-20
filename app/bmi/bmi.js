@@ -70,6 +70,7 @@ export default function Bmi() {
     document.getElementById("weightInputs").reset();
     setKilogramInput(0);
     setPoundInput(0);
+    setBmiResultVisibility(false);
 
     if (event.target.value == "Kg") {
       setIsKilogram(true);
@@ -92,6 +93,7 @@ export default function Bmi() {
     setMeterInput(0);
     setFootInput(0);
     setInchInput(0);
+    setBmiResultVisibility(false);
 
     if (event.target.value == "m") {
       setIsMeter(true);
