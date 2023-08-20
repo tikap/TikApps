@@ -5,10 +5,10 @@ export default function BmiResult({ resultValue, referenceToThisElement }) {
     if (referenceToThisElement.current) {
       referenceToThisElement.current.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "end",
       });
     }
-  }, []);
+  });
 
   if (isNaN(resultValue)) {
     return (

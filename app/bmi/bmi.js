@@ -67,6 +67,10 @@ export default function Bmi() {
 
   // Event handlers
   function handleWeightUnitChange(event) {
+    document.getElementById("weightInputs").reset();
+    setKilogramInput(0);
+    setPoundInput(0);
+
     if (event.target.value == "Kg") {
       setIsKilogram(true);
     }
@@ -84,6 +88,11 @@ export default function Bmi() {
   }
 
   function handleHeightUnitChange(event) {
+    document.getElementById("heightInputs").reset();
+    setMeterInput(0);
+    setFootInput(0);
+    setInchInput(0);
+
     if (event.target.value == "m") {
       setIsMeter(true);
     }
@@ -143,25 +152,27 @@ export default function Bmi() {
       <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
 
       <div className="flex justify-center items-center">
-        {isKilogram ? (
-          <NumberInput
-            label="Weight"
-            onValueChange={handleKilogramValueChange}
-            step="1"
-            max="500"
-            width="w-28"
-            placeholder="Kilograms"
-          />
-        ) : (
-          <NumberInput
-            label="Weight"
-            onValueChange={handlePoundValueChange}
-            step="1"
-            max="500"
-            width="w-28"
-            placeholder="Pounds"
-          />
-        )}
+        <form id="weightInputs">
+          {isKilogram ? (
+            <NumberInput
+              label="Weight"
+              onValueChange={handleKilogramValueChange}
+              step="1"
+              max="500"
+              width="w-28"
+              placeholder="Kilograms"
+            />
+          ) : (
+            <NumberInput
+              label="Weight"
+              onValueChange={handlePoundValueChange}
+              step="1"
+              max="500"
+              width="w-28"
+              placeholder="Pounds"
+            />
+          )}
+        </form>
         <RadioTwoOptions
           radioGroupName="weightUnitRadios"
           optionOneName="Kg"
@@ -171,37 +182,39 @@ export default function Bmi() {
       </div>
 
       <div className="flex justify-center items-center">
-        {isMeter ? (
-          <NumberInput
-            label="Height"
-            onValueChange={handleMeterValueChange}
-            onKeyPressed={handleKeyPressedOnHeightInput}
-            step="0.01"
-            max="3"
-            width="w-28"
-            placeholder="Meters"
-          />
-        ) : (
-          <>
+        <form id="heightInputs">
+          {isMeter ? (
             <NumberInput
               label="Height"
-              onValueChange={handleFootValueChange}
+              onValueChange={handleMeterValueChange}
               onKeyPressed={handleKeyPressedOnHeightInput}
               step="0.01"
               max="3"
-              width="w-14"
-              placeholder="Feet"
+              width="w-28"
+              placeholder="Meters"
             />
-            <NumberInput
-              onValueChange={handleInchValueChange}
-              onKeyPressed={handleKeyPressedOnHeightInput}
-              step="0.01"
-              max="3"
-              width="w-18"
-              placeholder="Inches"
-            />
-          </>
-        )}
+          ) : (
+            <div className="flex justify-center items-center">
+              <NumberInput
+                label="Height"
+                onValueChange={handleFootValueChange}
+                onKeyPressed={handleKeyPressedOnHeightInput}
+                step="0.01"
+                max="3"
+                width="w-14"
+                placeholder="Feet"
+              />
+              <NumberInput
+                onValueChange={handleInchValueChange}
+                onKeyPressed={handleKeyPressedOnHeightInput}
+                step="0.01"
+                max="3"
+                width="w-14"
+                placeholder="Inches"
+              />
+            </div>
+          )}
+        </form>
         <RadioTwoOptions
           radioGroupName="heightUnitRadios"
           optionOneName="m"
