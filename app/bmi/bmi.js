@@ -3,6 +3,10 @@
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 
+const POUND_TO_KILOGRAM_CONVERSION_RATE = 0.453592;
+const FOOT_TO_INCH_CONVERSION_RATE = 12;
+const INCH_TO_METER_CONVERSION_RATE = 0.0254;
+
 // Import sub components dynamically
 const RadioTwoOptions = dynamic(
   () => import("../components/forms/RadioTwoOptions.js"),
@@ -44,8 +48,11 @@ const CollapsableContent = dynamic(
 // Export this main component
 export default function Bmi() {
   // User input and calculated output states
-  const [weightInput, setWeightInput] = useState(Number(0));
-  const [heightInput, setHeightInput] = useState(Number(0));
+  const [kilogramInput, setKilogramInput] = useState(Number(0));
+  const [poundInput, setPoundInput] = useState(Number(0));
+  const [meterInput, setMeterInput] = useState(Number(0));
+  const [footInput, setFootInput] = useState(Number(0));
+  const [inchInput, setInchInput] = useState(Number(0));
   const [bmiResult, setBmiResult] = useState(Number(0));
 
   // Input unit states
@@ -59,10 +66,6 @@ export default function Bmi() {
   const bmiResultElementRef = useRef(null);
 
   // Event handlers
-  function handleWeightValueChange(event) {
-    setWeightInput(event.target.value);
-  }
-
   function handleWeightUnitChange(event) {
     if (event.target.value == "Kg") {
       setIsKilogram(true);
@@ -72,12 +75,12 @@ export default function Bmi() {
     }
   }
 
-  function handleHeightValueChange(event) {
-    let value = event.target.value;
-    if (value.length == 2) {
-      event.target.value = value.slice(0, 1) + "." + value.slice(1, 2);
-    }
-    setHeightInput(event.target.value);
+  function handleKilogramValueChange(event) {
+    setKilogramInput(event.target.value);
+  }
+
+  function handlePoundValueChange(event) {
+    setPoundInput(event.target.value);
   }
 
   function handleHeightUnitChange(event) {
@@ -89,15 +92,39 @@ export default function Bmi() {
     }
   }
 
+  function handleMeterValueChange(event) {
+    if (isMeter) {
+      let value = event.target.value;
+      if (value.length == 2) {
+        event.target.value = value.slice(0, 1) + "." + value.slice(1, 2);
+      }
+    }
+    setMeterInput(event.target.value);
+  }
+
   function handleKeyPressedOnHeightInput(event) {
     if (event.key == "Enter") {
       handleBmiCalculateButtonClick();
     }
   }
 
+  function handleFootValueChange(event) {
+    setFootInput(event.target.value);
+  }
+
+  function handleInchValueChange(event) {
+    setInchInput(event.target.value);
+  }
+
   function handleBmiCalculateButtonClick() {
-    const height = Number(heightInput);
-    const weight = Number(weightInput);
+    const weight = isKilogram
+      ? Number(kilogramInput)
+      : Number(poundInput) * POUND_TO_KILOGRAM_CONVERSION_RATE;
+
+    const height = isMeter
+      ? Number(meterInput)
+      : Number(footInput) * FOOT_TO_INCH_CONVERSION_RATE +
+        Number(inchInput) * INCH_TO_METER_CONVERSION_RATE;
 
     var result = weight / height ** 2;
 
@@ -119,7 +146,7 @@ export default function Bmi() {
         {isKilogram ? (
           <NumberInput
             label="Weight"
-            onValueChange={handleWeightValueChange}
+            onValueChange={handleKilogramValueChange}
             step="1"
             max="500"
             width="w-28"
@@ -128,7 +155,7 @@ export default function Bmi() {
         ) : (
           <NumberInput
             label="Weight"
-            onValueChange={handleWeightValueChange}
+            onValueChange={handlePoundValueChange}
             step="1"
             max="500"
             width="w-28"
@@ -147,7 +174,7 @@ export default function Bmi() {
         {isMeter ? (
           <NumberInput
             label="Height"
-            onValueChange={handleHeightValueChange}
+            onValueChange={handleMeterValueChange}
             onKeyPressed={handleKeyPressedOnHeightInput}
             step="0.01"
             max="3"
@@ -158,7 +185,7 @@ export default function Bmi() {
           <>
             <NumberInput
               label="Height"
-              onValueChange={handleHeightValueChange}
+              onValueChange={handleFootValueChange}
               onKeyPressed={handleKeyPressedOnHeightInput}
               step="0.01"
               max="3"
@@ -166,7 +193,7 @@ export default function Bmi() {
               placeholder="Feet"
             />
             <NumberInput
-              onValueChange={handleHeightValueChange}
+              onValueChange={handleInchValueChange}
               onKeyPressed={handleKeyPressedOnHeightInput}
               step="0.01"
               max="3"
