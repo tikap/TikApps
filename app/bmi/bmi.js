@@ -123,8 +123,8 @@ export default function Bmi() {
 
     const height = isMeter
       ? Number(meterInput)
-      : Number(footInput) * FOOT_TO_INCH_CONVERSION_RATE +
-        Number(inchInput) * INCH_TO_METER_CONVERSION_RATE;
+      : (Number(footInput) * FOOT_TO_INCH_CONVERSION_RATE + Number(inchInput)) *
+        INCH_TO_METER_CONVERSION_RATE;
 
     var result = weight / height ** 2;
 
