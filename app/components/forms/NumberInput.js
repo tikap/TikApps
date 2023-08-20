@@ -14,7 +14,7 @@ export default function NumberInput({
       <label className="flex justify-center items-center">
         <span className="mr-2">{label}</span>
         <input
-          id={label + "Id"}
+          id={label + placeholder}
           name={label}
           type="number"
           onChange={onValueChange}

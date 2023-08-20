@@ -111,7 +111,26 @@ export default function Bmi() {
     setMeterInput(event.target.value);
   }
 
-  function handleKeyPressedOnHeightInput(event) {
+  function handleKeyPressedToGoNext(event) {
+    if (event.key == "Enter") {
+      let heightToFocus = null;
+      switch (event.target.id) {
+        case "WeightKilograms":
+        case "WeightPounds":
+          heightToFocus =
+            document.getElementById("HeightMeters") ??
+            document.getElementById("HeightFeet");
+          heightToFocus?.focus();
+          break;
+        case "HeightFeet":
+          heightToFocus = document.getElementById("Inches");
+          heightToFocus?.focus();
+          break;
+      }
+    }
+  }
+
+  function handleKeyPressedToTriggerCalculate(event) {
     if (event.key == "Enter") {
       handleBmiCalculateButtonClick();
     }
@@ -162,6 +181,7 @@ export default function Bmi() {
             <NumberInput
               label="Weight"
               onValueChange={handleKilogramValueChange}
+              onKeyPressed={handleKeyPressedToGoNext}
               step="0.1"
               max="500"
               width="w-28"
@@ -171,6 +191,7 @@ export default function Bmi() {
             <NumberInput
               label="Weight"
               onValueChange={handlePoundValueChange}
+              onKeyPressed={handleKeyPressedToGoNext}
               step="0.1"
               max="500"
               width="w-28"
@@ -197,7 +218,7 @@ export default function Bmi() {
             <NumberInput
               label="Height"
               onValueChange={handleMeterValueChange}
-              onKeyPressed={handleKeyPressedOnHeightInput}
+              onKeyPressed={handleKeyPressedToTriggerCalculate}
               step="0.01"
               max="3"
               width="w-28"
@@ -208,15 +229,16 @@ export default function Bmi() {
               <NumberInput
                 label="Height"
                 onValueChange={handleFootValueChange}
-                onKeyPressed={handleKeyPressedOnHeightInput}
+                onKeyPressed={handleKeyPressedToGoNext}
                 step="0.01"
                 max="3"
                 width="w-14"
                 placeholder="Feet"
               />
               <NumberInput
+                label=""
                 onValueChange={handleInchValueChange}
-                onKeyPressed={handleKeyPressedOnHeightInput}
+                onKeyPressed={handleKeyPressedToTriggerCalculate}
                 step="0.01"
                 max="3"
                 width="w-14"
