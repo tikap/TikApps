@@ -65,11 +65,9 @@ export default function Bmi() {
   // References
   const bmiResultElementRef = useRef(null);
 
-  // Event handlers
+  // Weight input event handlers
   function handleWeightUnitChange(event) {
-    document.getElementById("weightInputs").reset();
-    setKilogramInput(0);
-    setPoundInput(0);
+    resetWeightInputs();
     setBmiResultVisibility(false);
 
     if (event.target.value == "Kg") {
@@ -81,18 +79,18 @@ export default function Bmi() {
   }
 
   function handleKilogramValueChange(event) {
+    setBmiResultVisibility(false);
     setKilogramInput(event.target.value);
   }
 
   function handlePoundValueChange(event) {
+    setBmiResultVisibility(false);
     setPoundInput(event.target.value);
   }
 
+  // Height input event handlers
   function handleHeightUnitChange(event) {
-    document.getElementById("heightInputs").reset();
-    setMeterInput(0);
-    setFootInput(0);
-    setInchInput(0);
+    resetHeightInputs();
     setBmiResultVisibility(false);
 
     if (event.target.value == "m") {
@@ -104,6 +102,7 @@ export default function Bmi() {
   }
 
   function handleMeterValueChange(event) {
+    setBmiResultVisibility(false);
     if (isMeter) {
       let value = event.target.value;
       if (value.length == 2) {
@@ -113,6 +112,22 @@ export default function Bmi() {
     setMeterInput(event.target.value);
   }
 
+  function handleFootValueChange(event) {
+    setBmiResultVisibility(false);
+    let value = event.target.value;
+    if (value.length >= 1) {
+      let heightToFocus = document.getElementById("Inches");
+      heightToFocus?.focus();
+    }
+    setFootInput(event.target.value);
+  }
+
+  function handleInchValueChange(event) {
+    setBmiResultVisibility(false);
+    setInchInput(event.target.value);
+  }
+
+  // Other event handlers
   function handleKeyPressedToGoNext(event) {
     if (event.key == "Enter") {
       let heightToFocus = null;
@@ -138,19 +153,6 @@ export default function Bmi() {
     }
   }
 
-  function handleFootValueChange(event) {
-    let value = event.target.value;
-    if (value.length >= 1) {
-      let heightToFocus = document.getElementById("Inches");
-      heightToFocus?.focus();
-    }
-    setFootInput(event.target.value);
-  }
-
-  function handleInchValueChange(event) {
-    setInchInput(event.target.value);
-  }
-
   function handleBmiCalculateButtonClick() {
     const weight = isKilogram
       ? Number(kilogramInput)
@@ -170,6 +172,20 @@ export default function Bmi() {
 
     setBmiResult(result);
     setBmiResultVisibility(true);
+  }
+
+  // Helper functions
+  function resetWeightInputs() {
+    document.getElementById("weightInputs").reset();
+    setKilogramInput(0);
+    setPoundInput(0);
+  }
+
+  function resetHeightInputs() {
+    document.getElementById("heightInputs").reset();
+    setMeterInput(0);
+    setFootInput(0);
+    setInchInput(0);
   }
 
   // BMI calculator JSX
