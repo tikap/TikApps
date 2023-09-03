@@ -18,10 +18,13 @@ export async function POST(req) {
   // Email content
   const mailData = {
     from: { name: "TikApps", address: process.env.NEXT_PUBLIC_EMAIL_ADDRESS },
-    to: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-    subject: request.name,
+    to:
+      request.sendCopy == true
+        ? [process.env.NEXT_PUBLIC_EMAIL_ADDRESS, request.email]
+        : process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
+    subject: request.name + " contact form submission.",
     text: request.message,
-    html: `<p>${request.message}</p>`,
+    html: `<h1>${request.message}</h1>`,
   };
 
   // debug
@@ -29,10 +32,10 @@ export async function POST(req) {
   //   { error: false, emailSent: true, errors: [] },
   //   { status: 200 }
   // );
-  console.log(process.env.NEXT_PUBLIC_EMAIL_HOST);
-  console.log(process.env.NEXT_PUBLIC_EMAIL_ADDRESS);
-  console.log(process.env.NEXT_PUBLIC_EMAIL_USER);
-  console.log(process.env.NEXT_PUBLIC_EMAIL_PASS);
+  // console.log(process.env.NEXT_PUBLIC_EMAIL_HOST);
+  // console.log(process.env.NEXT_PUBLIC_EMAIL_ADDRESS);
+  // console.log(process.env.NEXT_PUBLIC_EMAIL_USER);
+  // console.log(process.env.NEXT_PUBLIC_EMAIL_PASS);
 
   // Send
   return await transporter
