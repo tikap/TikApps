@@ -29,6 +29,10 @@ export async function POST(req) {
   //   { error: false, emailSent: true, errors: [] },
   //   { status: 200 }
   // );
+  console.log(process.env.NEXT_PUBLIC_EMAIL_HOST);
+  console.log(process.env.NEXT_PUBLIC_EMAIL_ADDRESS);
+  console.log(process.env.NEXT_PUBLIC_EMAIL_USER);
+  console.log(process.env.NEXT_PUBLIC_EMAIL_PASS);
 
   // Send
   return await transporter
