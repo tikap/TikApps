@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
+  // Effects
   useEffect(() => {
     const init = async () => {
       const { Input, Ripple, initTE } = await import("tw-elements");
@@ -10,6 +11,56 @@ export default function Contact() {
     };
     init();
   }, []);
+
+  // States
+  const [nameInput, setNameInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [messageInput, setMessageInput] = useState("");
+  const [sendCopyChecked, setSendCopyChecked] = useState(false);
+
+  // Input handlers
+  function handleNameValueChange(event) {
+    setNameInput(event.target.value);
+  }
+
+  function handleEmailValueChange(event) {
+    setEmailInput(event.target.value);
+  }
+
+  function handleMessageValueChange(event) {
+    setMessageInput(event.target.value);
+  }
+
+  function handleSendCopyCheckedChange(event) {
+    event.target.checked ? setSendCopyChecked(true) : setSendCopyChecked(false);
+  }
+
+  // User action handlers
+  function handleContactSend() {
+    fetch("/api/emailer", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: nameInput,
+        email: emailInput,
+        message: messageInput,
+        sendCopy: sendCopyChecked,
+      }),
+    })
+      .then((response) => {
+        console.log("response recieved client side");
+        console.log(response);
+        if (response.status === 200) {
+          console.log("response succeeded client side");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <>
@@ -29,6 +80,7 @@ export default function Contact() {
                   className="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="exampleInput90"
                   placeholder="Name"
+                  onChange={handleNameValueChange}
                 />
                 <label
                   className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
@@ -43,6 +95,7 @@ export default function Contact() {
                   className="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="exampleInput91"
                   placeholder="Email address"
+                  onChange={handleEmailValueChange}
                 />
                 <label
                   className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
@@ -57,6 +110,7 @@ export default function Contact() {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Your message"
+                  onChange={handleMessageValueChange}
                 ></textarea>
                 <label
                   htmlFor="exampleFormControlTextarea1"
@@ -71,6 +125,7 @@ export default function Contact() {
                   type="checkbox"
                   value=""
                   id="exampleCheck96"
+                  onChange={handleSendCopyCheckedChange}
                 />
                 <label
                   className="inline-block pl-[0.15rem] hover:cursor-pointer"
@@ -84,6 +139,7 @@ export default function Contact() {
                 data-te-ripple-init
                 data-te-ripple-color="light"
                 className="mb-6 inline-block w-full rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                onClick={handleContactSend}
               >
                 Send
               </button>

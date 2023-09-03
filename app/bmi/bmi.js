@@ -127,7 +127,7 @@ export default function Bmi() {
     setInchInput(event.target.value);
   }
 
-  // Other event handlers
+  // User action handlers
   function handleKeyPressedToGoNext(event) {
     if (event.key == "Enter") {
       let heightToFocus = null;
