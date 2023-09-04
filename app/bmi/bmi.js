@@ -45,7 +45,7 @@ const CollapsableContent = dynamic(
   }
 );
 
-// Export this main component
+// Main component
 export default function Bmi() {
   // User input and calculated output states
   const [kilogramInput, setKilogramInput] = useState(Number(0));
