@@ -18,13 +18,11 @@ export async function POST(req) {
   // Email content
   const mailData = {
     from: { name: "TikApps", address: process.env.NEXT_PUBLIC_EMAIL_ADDRESS },
-    to:
-      request.sendCopy == true
-        ? [process.env.NEXT_PUBLIC_EMAIL_ADDRESS, request.email]
-        : process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
+    to: request.sendCopy ? request.email : null,
+    bcc: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
     subject: request.name + " contact form submission.",
     text: request.message,
-    html: `<h1>${request.message}</h1>`,
+    html: `<h2>${request.message}</h2>`,
   };
 
   // debug

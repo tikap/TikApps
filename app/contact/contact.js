@@ -50,8 +50,9 @@ export default function Contact() {
   }
 
   // User action handlers
-  function handleContactSend() {
+  function handleContactSend(e) {
     setCurrentEmailState(emailState.Sending);
+    e.preventDefault();
 
     fetch("/api/emailer", {
       method: "POST",
