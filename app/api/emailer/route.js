@@ -1,8 +1,19 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { render } from "@react-email/render";
+import ContactSubmitEmail from "@/app/components/emails/ContactSubmitEmail";
 
 export async function POST(req) {
   const request = await req.json();
+
+  const htmlToSend = render(
+    <ContactSubmitEmail
+      name={request.name}
+      email={request.email}
+      message={request.message}
+      sendCopy={request.sendCopy}
+    />
+  );
 
   // Create a transporter object
   const transporter = nodemailer.createTransport({
@@ -22,7 +33,7 @@ export async function POST(req) {
     bcc: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
     subject: request.name + " contact form submission.",
     text: request.message,
-    html: `<h2>${request.message}</h2>`,
+    html: htmlToSend,
   };
 
   // debug
