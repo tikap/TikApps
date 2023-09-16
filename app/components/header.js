@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { render } from "react-dom";
 
 export default function Header() {
   useEffect(() => {
