@@ -27,7 +27,7 @@ export default function Header() {
             >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
-                  className="block transition duration-150 ease-in-out 
+                  className="font-bold text-3xl block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 
@@ -37,10 +37,18 @@ export default function Header() {
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
-                  Home
+                  TikApps
                 </Link>
               </li>
-              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            </ul>
+            <ul
+              className="mr-auto flex flex-col flex-wrap justify-center items-center lg:flex-row"
+              data-te-navbar-nav-ref
+            >
+              <li
+                className="w-max border border-neutral-50 rounded-lg m-2 p-2"
+                data-te-nav-item-ref
+              >
                 <Link
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
@@ -55,6 +63,29 @@ export default function Header() {
                   BMI Calculator
                 </Link>
               </li>
+              <li
+                className="w-max border border-neutral-50 rounded-lg m-2 p-2"
+                data-te-nav-item-ref
+              >
+                <Link
+                  className="block transition duration-150 ease-in-out 
+                  hover:text-neutral-400 
+                  focus:text-white 
+                  disabled:text-black/30 lg:p-2 
+                  [&.active]:text-black/90"
+                  href="./calorie"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Daily Calorie Calculator
+                </Link>
+              </li>
+            </ul>
+            <ul
+              className="flex flex-wrap justify-center lg:flex-row"
+              data-te-navbar-nav-ref
+            >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <Link
                   className="block transition duration-150 ease-in-out 
