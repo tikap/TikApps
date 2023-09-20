@@ -9,6 +9,7 @@ import {
   Section,
   Text,
   Tailwind,
+  Heading,
 } from "@react-email/components";
 
 export default function ContactSubmitEmail({ name, email, message, sendCopy }) {
@@ -22,16 +23,22 @@ export default function ContactSubmitEmail({ name, email, message, sendCopy }) {
       <Preview>{limit(message, 50)}...</Preview>
 
       <Tailwind>
-        <Body className="w-auto h-auto min-h-screen bg-gray-900 text-neutral-200 p-12 text-center">
+        <Body
+          className="w-auto h-auto min-h-screen 
+        bg-gray-900
+        text-neutral-200 p-12 text-center"
+        >
           <Section>
             <Container>
               <Hr />
               <Section>
                 <Row>
-                  <Text>Contact form submitted in TikApps:</Text>
-                  <Text>{message}</Text>
+                  <Heading className="text-lg font-bold">
+                    Contact form submitted in TikApps
+                  </Heading>
+                  <Text>Message: {message}</Text>
                   <Text>
-                    sent by {name} {email}.
+                    by {name}, {email}
                   </Text>
                 </Row>
               </Section>

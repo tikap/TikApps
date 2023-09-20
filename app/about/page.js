@@ -1,20 +1,19 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import PageLoadingWrapper from "../components/wrappers/pageloadingwrapper.js";
 
 // Import sub components dynamically
 const MainWrapper = dynamic(
   () => import("../components/wrappers/mainwrapper.js"),
   {
-    loading: () => (
-      <p className="h-screen p-8 text-center text-neutral-200">Loading...</p>
-    ),
+    loading: () => <PageLoadingWrapper loadingText="Loading..." />,
     ssr: false,
   }
 );
 
 const About = dynamic(() => import("./about.js"), {
-  loading: () => <p className="my-4 text-neutral-200">Loading...</p>,
+  loading: () => <PageLoadingWrapper loadingText="Loading..." />,
   ssr: false,
 });
 

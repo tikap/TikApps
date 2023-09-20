@@ -193,7 +193,7 @@ export default function Bmi() {
     <div>
       <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center">
         <form
           id="weightInputs"
           onSubmit={(e) => {
