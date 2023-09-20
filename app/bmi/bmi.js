@@ -7,7 +7,7 @@ const POUND_TO_KILOGRAM_CONVERSION_RATE = 0.453592;
 const FOOT_TO_INCH_CONVERSION_RATE = 12;
 const INCH_TO_METER_CONVERSION_RATE = 0.0254;
 
-// Import sub components dynamically
+//#region Import sub components dynamically
 const RadioTwoOptions = dynamic(
   () => import("../components/forms/RadioTwoOptions.js"),
   {
@@ -25,7 +25,7 @@ const NumberInput = dynamic(
 );
 
 const BmiCalculateButton = dynamic(
-  () => import("../components/forms/BmiCalculateButton.js"),
+  () => import("../components/forms/CalculateButton.js"),
   {
     loading: () => <p className="my-4">Loading...</p>,
     ssr: false,
@@ -44,6 +44,7 @@ const CollapsableContent = dynamic(
     ssr: false,
   }
 );
+//#endregion
 
 // Main component
 export default function Bmi() {
@@ -191,7 +192,7 @@ export default function Bmi() {
   // BMI calculator JSX
   return (
     <div>
-      <h4 className="mb-6 text-xl font-semibold">Body Mass Index Calculator</h4>
+      <h4 className="mb-6 text-xl">Body Mass Index Calculator</h4>
 
       <div className="flex justify-center">
         <form
@@ -285,7 +286,7 @@ export default function Bmi() {
 
       <BmiCalculateButton
         label="Calculate"
-        onBmiCalculateButtonClick={handleBmiCalculateButtonClick}
+        onCalculateButtonClick={handleBmiCalculateButtonClick}
       />
 
       <div>

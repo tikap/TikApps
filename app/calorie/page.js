@@ -12,12 +12,12 @@ const MainWrapper = dynamic(
   }
 );
 
+const Calorie = dynamic(() => import("./calorie.js"), {
+  loading: () => <PageLoadingWrapper loadingText="Loading..." />,
+  ssr: false,
+});
+
 // Export this main component
 export default function Page() {
-  return <MainWrapper wrappedComponent={<p>Work in progress...</p>} />;
+  return <MainWrapper wrappedComponent={<Calorie />} />;
 }
-
-// Sauce:
-// https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation
-// https://en.wikipedia.org/wiki/Schofield_equation
-// https://en.wikipedia.org/wiki/Institute_of_Medicine_Equation

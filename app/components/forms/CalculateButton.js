@@ -1,13 +1,10 @@
 "use client";
 
-export default function BmiCalculateButton({
-  label,
-  onBmiCalculateButtonClick,
-}) {
+export default function CalculateButton({ label, onCalculateButtonClick }) {
   return (
     <button
       type="button"
-      onClick={onBmiCalculateButtonClick}
+      onClick={onCalculateButtonClick}
       data-te-ripple-init
       data-te-ripple-color="light"
       className="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
