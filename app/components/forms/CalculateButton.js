@@ -7,7 +7,8 @@ export default function CalculateButton({ label, onCalculateButtonClick }) {
       onClick={onCalculateButtonClick}
       data-te-ripple-init
       data-te-ripple-color="light"
-      className="rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
+      className="mb-4
+          rounded-lg bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal 
           text-neutral-200 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out 
           hover:bg-indigo-800 
           hover:text-neutral-100

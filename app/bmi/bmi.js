@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link.js";
 
 const POUND_TO_KILOGRAM_CONVERSION_RATE = 0.453592;
 const FOOT_TO_INCH_CONVERSION_RATE = 12;
@@ -36,14 +37,6 @@ const BmiResult = dynamic(() => import("./bmiResult.js"), {
   loading: () => <p className="my-4">Loading...</p>,
   ssr: false,
 });
-
-const CollapsableContent = dynamic(
-  () => import("../components/content/CollapsableContent.js"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
 //#endregion
 
 // Main component
@@ -298,30 +291,9 @@ export default function Bmi() {
         ) : null}
       </div>
 
-      <div>
-        <CollapsableContent
-          contentHeading="What does BMI indicate?"
-          content="Use your Body Mass Index as an estimate of where you fall in the health risk category,
-          but note that it is not an actual medical prediction. Falling within normal BMI range is ideal for avoiding weight related health issues. 
-          Higher BMI categories (overweight and obese) indicate higher risk to cardiovascular diseases
-          (heart attack, stroke, etc), diabetes, musculoskeletal disorders and some cancers. Likewise, the lower end of 
-          BMI category (underweight) have a greater risks to health conditions like malnutrition, osteoporosis and 
-          lowered immunity."
-          uniqueId="collapseBmiIndications"
-        />
-      </div>
-      <div>
-        <CollapsableContent
-          contentHeading="Limitations of BMI"
-          content="This index is known to have several limitations. 
-          It over-estimates BMI for bodies that are taller and more muscular,
-          and under-estimates shorter and skinnier bodies. The weight categorizations have also varied over jurisdictions 
-          and time periods so the BMI ranges will vary depending on which region and year it is being referenced from. 
-          The current standard is set by the National Institution of Health (NIH) in 1998 and also echoed by
-          the World Health Organization (WHO) over the 1990s."
-          uniqueId="collapsableBmiLimitations"
-        />
-      </div>
+      <Link className="underline m-8" href="./about#BodyMassIndexCalculator">
+        Body Mass Index FAQ: Learn more
+      </Link>
     </div>
   );
 }

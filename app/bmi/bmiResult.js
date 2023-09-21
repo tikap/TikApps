@@ -47,7 +47,7 @@ export default function BmiResult({ resultValue, referenceToThisElement }) {
 
   return (
     <div ref={referenceToThisElement} className="flex justify-center">
-      <div className="w-128 p-2 my-4">
+      <div className="w-128 p-2 mb-4">
         <div className="block m-8">
           Your BMI:
           <span className="font-bold text-lg mx-2">{resultValue}</span>
