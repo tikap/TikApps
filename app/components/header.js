@@ -17,7 +17,7 @@ export default function Header() {
     <header>
       <nav
         className="relative flex w-full items-center justify-between 
-        bg-gradient-to-r from-gray-900 bg-gray-800 py-2 
+        bg-gradient-to-r from-gray-900 to-gray-800 py-2 
         text-neutral-200 shadow-lg hover:text-neutral-400 focus:text-neutral-700"
         data-te-navbar-ref
       >
@@ -44,9 +44,9 @@ export default function Header() {
               </li>
             </ul>
             <ul
-              className="mr-auto flex flex-col flex-wrap justify-center items-center lg:flex-row
-              rounded-full 
-              bg-gradient-to-r from-gray-950 bg-gray-900"
+              className="mr-auto flex flex-col flex-wrap items-center lg:flex-row
+              rounded-full
+              bg-gradient-to-r from-gray-900 via-gray-950 to-transparent"
               data-te-navbar-nav-ref
             >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
