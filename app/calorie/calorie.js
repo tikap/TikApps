@@ -1,4 +1,7 @@
+"use client";
+
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import PageLoadingWrapper from "../components/wrappers/pageloadingwrapper";
 
 //#region Import sub components dynamically
@@ -26,16 +29,42 @@ const CalculateButton = dynamic(
 
 // Main component
 export default function Calorie() {
+  // States
+  const [isKilogram, setIsKilogram] = useState(true);
+  const [isMeter, setIsMeter] = useState(true);
+
   // UI event handlers
+  // Sex assigned at birth
+  function handleSexValueChange() {}
+
+  // Age
   function handleAgeValueChange() {}
 
   function handleAgeKeyEntered() {}
 
-  function handleSexValueChange() {}
+  // Weight
+  function handleKilogramValueChange() {}
 
-  function handleCalorieCalculateButtonClick() {
-    console.log("clicked!");
-  }
+  function handlePoundValueChange() {}
+
+  function handleWeightUnitChange() {}
+
+  // Height
+  function handleMeterValueChange() {}
+
+  function handleFootValueChange() {}
+
+  function handleInchValueChange() {}
+
+  function handleHeightUnitChange() {}
+
+  // Calculate button
+  function handleCalorieCalculateButtonClick() {}
+
+  // User interaction event handlers
+  function handleKeyPressedToGoNext() {}
+
+  function handleKeyPressedToTriggerCalculate() {}
 
   // Calorie calculator JSX
   return (
@@ -43,7 +72,7 @@ export default function Calorie() {
       <h4 className="mb-6 text-xl">Daily Calorie Calculator</h4>
 
       <div className="flex justify-center">
-        <span className="pr-3">Sex</span>
+        <span className="mr-2">Sex</span>
         <RadioTwoOptions
           radioGroupName="sexAssignedAtBirth"
           optionOneName="Male"
@@ -62,6 +91,96 @@ export default function Calorie() {
         step="1"
         width="w-16"
       />
+
+      <div className="flex justify-center">
+        <form
+          id="weightInputsForCalorieCalculator"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          {isKilogram ? (
+            <NumberInput
+              label="Weight"
+              onValueChange={handleKilogramValueChange}
+              onKeyPressed={handleKeyPressedToGoNext}
+              step="0.1"
+              max="1000"
+              min="0"
+              width="w-28"
+              placeholder="Kilograms"
+            />
+          ) : (
+            <NumberInput
+              label="Weight"
+              onValueChange={handlePoundValueChange}
+              onKeyPressed={handleKeyPressedToGoNext}
+              step="0.1"
+              max="2000"
+              min="0"
+              width="w-28"
+              placeholder="Pounds"
+            />
+          )}
+        </form>
+        <RadioTwoOptions
+          radioGroupName="weightUnitRadiosForCalorieCalculator"
+          optionOneName="Kg"
+          optionTwoName="lbs"
+          onOptionChanged={handleWeightUnitChange}
+        />
+      </div>
+
+      <div className="flex justify-center items-center">
+        <form
+          id="heightInputsForCalorieCalculator"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          {isMeter ? (
+            <NumberInput
+              label="Height"
+              onValueChange={handleMeterValueChange}
+              onKeyPressed={handleKeyPressedToTriggerCalculate}
+              step="0.01"
+              max="9"
+              min="0"
+              width="w-28"
+              placeholder="Meters"
+            />
+          ) : (
+            <div className="flex justify-center items-center">
+              <NumberInput
+                label="Height"
+                onValueChange={handleFootValueChange}
+                onKeyPressed={handleKeyPressedToGoNext}
+                step="1"
+                max="10"
+                min="0"
+                width="w-14"
+                placeholder="Feet"
+              />
+              <NumberInput
+                label=""
+                onValueChange={handleInchValueChange}
+                onKeyPressed={handleKeyPressedToTriggerCalculate}
+                step="0.01"
+                max="120"
+                min="0"
+                width="w-14"
+                placeholder="Inches"
+              />
+            </div>
+          )}
+        </form>
+        <RadioTwoOptions
+          radioGroupName="heightUnitRadiosForCalorieCalculator"
+          optionOneName="m"
+          optionTwoName="ft / in"
+          onOptionChanged={handleHeightUnitChange}
+        />
+      </div>
 
       <CalculateButton
         label="Calculate"
