@@ -6,7 +6,7 @@ export default function About() {
     <div className="space-y-4">
       <div className="p-2">
         <h4 className="mb-6 text-xl font-semibold">About This Website</h4>
-        <p className="my-4">
+        <p className="my-10">
           A web application with simple utilities that will help keep track of
           your health. Feel free to explore and use the tools from the
           navigation bar above. <br /> The current list of available tools and
@@ -16,7 +16,7 @@ export default function About() {
       <Link
         id="BodyMassIndexCalculator"
         href="./bmi"
-        className="mb-6 font-semibold"
+        className="block font-semibold"
       >
         Body Mass Index Calculator
       </Link>
