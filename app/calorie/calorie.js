@@ -69,6 +69,8 @@ export default function Calorie() {
   }
 
   function handleWeightUnitChange(event) {
+    resetWeightInputs();
+
     if (event.target.value == "Kg") {
       setIsKilogram(true);
     }
@@ -91,6 +93,8 @@ export default function Calorie() {
   }
 
   function handleHeightUnitChange(event) {
+    resetHeightInputs();
+
     if (event.target.value == "m") {
       setIsMeter(true);
     }
@@ -115,6 +119,20 @@ export default function Calorie() {
   function handleKeyPressedToGoNext() {}
 
   function handleKeyPressedToTriggerCalculate() {}
+
+  // Helper functions
+  function resetWeightInputs() {
+    document.getElementById("calorieWeightInputs").reset();
+    setKilogramInput(0);
+    setPoundInput(0);
+  }
+
+  function resetHeightInputs() {
+    document.getElementById("calorieHeightInputs").reset();
+    setMeterInput(0);
+    setFootInput(0);
+    setInchInput(0);
+  }
 
   // Calorie calculator JSX
   return (
@@ -145,7 +163,7 @@ export default function Calorie() {
 
       <div className="flex justify-center">
         <form
-          id="weightInputsForCalorieCalculator"
+          id="calorieWeightInputs"
           onSubmit={(e) => {
             e.preventDefault();
           }}
@@ -175,7 +193,7 @@ export default function Calorie() {
           )}
         </form>
         <RadioTwoOptions
-          radioGroupName="weightUnitRadiosForCalorieCalculator"
+          radioGroupName="calorieWeightUnitRadios"
           optionOneName="Kg"
           optionTwoName="lbs"
           onOptionChanged={handleWeightUnitChange}
@@ -184,7 +202,7 @@ export default function Calorie() {
 
       <div className="flex justify-center items-center">
         <form
-          id="heightInputsForCalorieCalculator"
+          id="calorieHeightInputs"
           onSubmit={(e) => {
             e.preventDefault();
           }}
@@ -226,7 +244,7 @@ export default function Calorie() {
           )}
         </form>
         <RadioTwoOptions
-          radioGroupName="heightUnitRadiosForCalorieCalculator"
+          radioGroupName="calorieHeightUnitRadios"
           optionOneName="m"
           optionTwoName="ft / in"
           onOptionChanged={handleHeightUnitChange}

@@ -170,13 +170,13 @@ export default function Bmi() {
 
   // Helper functions
   function resetWeightInputs() {
-    document.getElementById("weightInputs").reset();
+    document.getElementById("bmiWeightInputs").reset();
     setKilogramInput(0);
     setPoundInput(0);
   }
 
   function resetHeightInputs() {
-    document.getElementById("heightInputs").reset();
+    document.getElementById("bmiHeightInputs").reset();
     setMeterInput(0);
     setFootInput(0);
     setInchInput(0);
@@ -189,7 +189,7 @@ export default function Bmi() {
 
       <div className="flex justify-center">
         <form
-          id="weightInputs"
+          id="bmiWeightInputs"
           onSubmit={(e) => {
             e.preventDefault();
           }}
@@ -219,7 +219,7 @@ export default function Bmi() {
           )}
         </form>
         <RadioTwoOptions
-          radioGroupName="weightUnitRadios"
+          radioGroupName="bmiWeightUnitRadios"
           optionOneName="Kg"
           optionTwoName="lbs"
           onOptionChanged={handleWeightUnitChange}
@@ -228,7 +228,7 @@ export default function Bmi() {
 
       <div className="flex justify-center items-center">
         <form
-          id="heightInputs"
+          id="bmiHeightInputs"
           onSubmit={(e) => {
             e.preventDefault();
           }}
@@ -270,7 +270,7 @@ export default function Bmi() {
           )}
         </form>
         <RadioTwoOptions
-          radioGroupName="heightUnitRadios"
+          radioGroupName="bmiHeightUnitRadios"
           optionOneName="m"
           optionTwoName="ft / in"
           onOptionChanged={handleHeightUnitChange}
