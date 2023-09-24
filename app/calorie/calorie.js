@@ -45,17 +45,28 @@ export default function Calorie() {
 
   // UI event handlers
   // Sex assigned at birth
-  function handleSexValueChange() {}
+  function handleSexValueChange(event) {
+    if (event.target.value == "Male") {
+      setSexInput("Male");
+    }
+    if (event.target.value == "Female") {
+      setSexInput("Female");
+    }
+  }
 
   // Age
-  function handleAgeValueChange() {}
-
-  function handleAgeKeyEntered() {}
+  function handleAgeValueChange(event) {
+    setAgeInput(event.target.value);
+  }
 
   // Weight
-  function handleKilogramValueChange() {}
+  function handleKilogramValueChange(event) {
+    setKilogramInput(event.target.value);
+  }
 
-  function handlePoundValueChange() {}
+  function handlePoundValueChange(event) {
+    setPoundInput(event.target.value);
+  }
 
   function handleWeightUnitChange(event) {
     if (event.target.value == "Kg") {
@@ -67,11 +78,17 @@ export default function Calorie() {
   }
 
   // Height
-  function handleMeterValueChange() {}
+  function handleMeterValueChange(event) {
+    setMeterInput(event.target.value);
+  }
 
-  function handleFootValueChange() {}
+  function handleFootValueChange(event) {
+    setFootInput(event.target.value);
+  }
 
-  function handleInchValueChange() {}
+  function handleInchValueChange(event) {
+    setInchInput(event.target.value);
+  }
 
   function handleHeightUnitChange(event) {
     if (event.target.value == "m") {
@@ -83,7 +100,16 @@ export default function Calorie() {
   }
 
   // Calculate button
-  function handleCalorieCalculateButtonClick() {}
+  function handleCalorieCalculateButtonClick() {
+    // debug
+    console.log(sexInput);
+    console.log(ageInput);
+    console.log(kilogramInput);
+    console.log(poundInput);
+    console.log(meterInput);
+    console.log(footInput);
+    console.log(inchInput);
+  }
 
   // User interaction event handlers
   function handleKeyPressedToGoNext() {}
@@ -109,7 +135,7 @@ export default function Calorie() {
       <NumberInput
         label="Age"
         onValueChange={handleAgeValueChange}
-        onKeyPressed={handleAgeKeyEntered}
+        onKeyPressed={handleKeyPressedToGoNext}
         placeholder="Years"
         min="0"
         max="200"
