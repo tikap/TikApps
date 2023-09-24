@@ -59,7 +59,7 @@ export default function Bmi() {
   // References
   const bmiResultElementRef = useRef(null);
 
-  // Weight input event handlers
+  // Weight
   function handleWeightUnitChange(event) {
     resetWeightInputs();
     setBmiResultVisibility(false);
@@ -82,7 +82,7 @@ export default function Bmi() {
     setPoundInput(event.target.value);
   }
 
-  // Height input event handlers
+  // Height
   function handleHeightUnitChange(event) {
     resetHeightInputs();
     setBmiResultVisibility(false);

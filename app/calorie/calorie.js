@@ -29,7 +29,17 @@ const CalculateButton = dynamic(
 
 // Main component
 export default function Calorie() {
-  // States
+  // User input and calculated output states
+  const [sexInput, setSexInput] = useState(null);
+  const [ageInput, setAgeInput] = useState(Number(0));
+  const [kilogramInput, setKilogramInput] = useState(Number(0));
+  const [poundInput, setPoundInput] = useState(Number(0));
+  const [meterInput, setMeterInput] = useState(Number(0));
+  const [footInput, setFootInput] = useState(Number(0));
+  const [inchInput, setInchInput] = useState(Number(0));
+  const [calorieResult, setCalorieResult] = useState(Number(0));
+
+  // Unit states
   const [isKilogram, setIsKilogram] = useState(true);
   const [isMeter, setIsMeter] = useState(true);
 
@@ -47,7 +57,14 @@ export default function Calorie() {
 
   function handlePoundValueChange() {}
 
-  function handleWeightUnitChange() {}
+  function handleWeightUnitChange(event) {
+    if (event.target.value == "Kg") {
+      setIsKilogram(true);
+    }
+    if (event.target.value == "lbs") {
+      setIsKilogram(false);
+    }
+  }
 
   // Height
   function handleMeterValueChange() {}
@@ -56,7 +73,14 @@ export default function Calorie() {
 
   function handleInchValueChange() {}
 
-  function handleHeightUnitChange() {}
+  function handleHeightUnitChange(event) {
+    if (event.target.value == "m") {
+      setIsMeter(true);
+    }
+    if (event.target.value == "ft / in") {
+      setIsMeter(false);
+    }
+  }
 
   // Calculate button
   function handleCalorieCalculateButtonClick() {}
@@ -78,6 +102,7 @@ export default function Calorie() {
           optionOneName="Male"
           optionTwoName="Female"
           onOptionChanged={handleSexValueChange}
+          isDefaultChecked={false}
         />
       </div>
 
