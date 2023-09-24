@@ -1,30 +1,34 @@
 "use client";
 
+import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import PageLoadingWrapper from "../components/wrappers/pageloadingwrapper";
 
 //#region Import sub components dynamically
 const RadioTwoOptions = dynamic(
   () => import("../components/forms/RadioTwoOptions"),
   {
-    loading: () => <PageLoadingWrapper loadingText="Loading..." />,
+    loading: () => <p className="my-4">Loading...</p>,
     ssr: false,
   }
 );
 
 const NumberInput = dynamic(() => import("../components/forms/NumberInput"), {
-  loading: () => <PageLoadingWrapper loadingText="Loading..." />,
+  loading: () => <p className="my-4">Loading...</p>,
   ssr: false,
 });
 
 const CalculateButton = dynamic(
   () => import("../components/forms/CalculateButton"),
   {
-    loading: () => <PageLoadingWrapper loadingText="Loading..." />,
+    loading: () => <p className="my-4">Loading...</p>,
     ssr: false,
   }
 );
+
+const CalorieResult = dynamic(() => import("./calorieResult"), {
+  loading: () => <p className="my-4">Loading...</p>,
+  ssr: false,
+});
 //#endregion
 
 // Main component
@@ -42,6 +46,12 @@ export default function Calorie() {
   // Unit states
   const [isKilogram, setIsKilogram] = useState(true);
   const [isMeter, setIsMeter] = useState(true);
+
+  // Visibility states
+  const [calorieResultVisibility, setCalorieResultVisibility] = useState(false);
+
+  // References
+  const calorieResultElementRef = useRef(null);
 
   // UI event handlers
   // Sex assigned at birth
@@ -70,6 +80,7 @@ export default function Calorie() {
 
   function handleWeightUnitChange(event) {
     resetWeightInputs();
+    setCalorieResultVisibility(false);
 
     if (event.target.value == "Kg") {
       setIsKilogram(true);
@@ -94,6 +105,7 @@ export default function Calorie() {
 
   function handleHeightUnitChange(event) {
     resetHeightInputs();
+    setCalorieResultVisibility(false);
 
     if (event.target.value == "m") {
       setIsMeter(true);
@@ -113,6 +125,7 @@ export default function Calorie() {
     console.log(meterInput);
     console.log(footInput);
     console.log(inchInput);
+    setCalorieResultVisibility(true);
   }
 
   // User interaction event handlers
@@ -255,6 +268,15 @@ export default function Calorie() {
         label="Calculate"
         onCalculateButtonClick={handleCalorieCalculateButtonClick}
       />
+
+      <div>
+        {calorieResultVisibility ? (
+          <CalorieResult
+            resultValue={calorieResult}
+            referenceToThisElement={calorieResultElementRef}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }
