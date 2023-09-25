@@ -122,28 +122,24 @@ export default function Bmi() {
   }
 
   // User action handlers
-  function handleKeyPressedToGoNext(event) {
+  function handleKeyPressed(event) {
     if (event.key == "Enter") {
-      let heightToFocus = null;
+      let elementToFocus = null;
       switch (event.target.id) {
         case "WeightKilograms":
         case "WeightPounds":
-          heightToFocus =
+          elementToFocus =
             document.getElementById("HeightMeters") ??
             document.getElementById("HeightFeet");
-          heightToFocus?.focus();
+          elementToFocus?.focus();
           break;
         case "HeightFeet":
-          heightToFocus = document.getElementById("Inches");
-          heightToFocus?.focus();
+          elementToFocus = document.getElementById("Inches");
+          elementToFocus?.focus();
           break;
+        default:
+          handleBmiCalculateButtonClick();
       }
-    }
-  }
-
-  function handleKeyPressedToTriggerCalculate(event) {
-    if (event.key == "Enter") {
-      handleBmiCalculateButtonClick();
     }
   }
 
@@ -198,7 +194,7 @@ export default function Bmi() {
             <NumberInput
               label="Weight"
               onValueChange={handleKilogramValueChange}
-              onKeyPressed={handleKeyPressedToGoNext}
+              onKeyPressed={handleKeyPressed}
               step="0.1"
               max="1000"
               min="0"
@@ -209,7 +205,7 @@ export default function Bmi() {
             <NumberInput
               label="Weight"
               onValueChange={handlePoundValueChange}
-              onKeyPressed={handleKeyPressedToGoNext}
+              onKeyPressed={handleKeyPressed}
               step="0.1"
               max="2000"
               min="0"
@@ -237,7 +233,7 @@ export default function Bmi() {
             <NumberInput
               label="Height"
               onValueChange={handleMeterValueChange}
-              onKeyPressed={handleKeyPressedToTriggerCalculate}
+              onKeyPressed={handleKeyPressed}
               step="0.01"
               max="9"
               min="0"
@@ -249,7 +245,7 @@ export default function Bmi() {
               <NumberInput
                 label="Height"
                 onValueChange={handleFootValueChange}
-                onKeyPressed={handleKeyPressedToGoNext}
+                onKeyPressed={handleKeyPressed}
                 step="1"
                 max="10"
                 min="0"
@@ -259,7 +255,7 @@ export default function Bmi() {
               <NumberInput
                 label=""
                 onValueChange={handleInchValueChange}
-                onKeyPressed={handleKeyPressedToTriggerCalculate}
+                onKeyPressed={handleKeyPressed}
                 step="0.01"
                 max="120"
                 min="0"

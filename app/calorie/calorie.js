@@ -56,6 +56,8 @@ export default function Calorie() {
   // UI event handlers
   // Sex assigned at birth
   function handleSexValueChange(event) {
+    setCalorieResultVisibility(false);
+
     if (event.target.value == "Male") {
       setSexInput("Male");
     }
@@ -66,6 +68,7 @@ export default function Calorie() {
 
   // Age
   function handleAgeValueChange(event) {
+    setCalorieResultVisibility(false);
     setAgeInput(event.target.value);
   }
 
@@ -92,10 +95,23 @@ export default function Calorie() {
 
   // Height
   function handleMeterValueChange(event) {
+    setCalorieResultVisibility(false);
+    if (isMeter) {
+      let value = event.target.value;
+      if (value.length == 2) {
+        event.target.value = value.slice(0, 1) + "." + value.slice(1, 2);
+      }
+    }
     setMeterInput(event.target.value);
   }
 
   function handleFootValueChange(event) {
+    setCalorieResultVisibility(false);
+    let value = event.target.value;
+    if (value.length >= 1) {
+      let heightToFocus = document.getElementById("Inches");
+      heightToFocus?.focus();
+    }
     setFootInput(event.target.value);
   }
 
@@ -128,10 +144,33 @@ export default function Calorie() {
     setCalorieResultVisibility(true);
   }
 
-  // User interaction event handlers
-  function handleKeyPressedToGoNext() {}
-
-  function handleKeyPressedToTriggerCalculate() {}
+  // User action handlers
+  function handleKeyPressed(event) {
+    if (event.key == "Enter") {
+      let elementToFocus = null;
+      switch (event.target.id) {
+        case "AgeYears":
+          elementToFocus =
+            document.getElementById("WeightKilograms") ??
+            document.getElementById("WeightPounds");
+          elementToFocus?.focus();
+          break;
+        case "WeightKilograms":
+        case "WeightPounds":
+          elementToFocus =
+            document.getElementById("HeightMeters") ??
+            document.getElementById("HeightFeet");
+          elementToFocus?.focus();
+          break;
+        case "HeightFeet":
+          elementToFocus = document.getElementById("Inches");
+          elementToFocus?.focus();
+          break;
+        default:
+          handleCalorieCalculateButtonClick();
+      }
+    }
+  }
 
   // Helper functions
   function resetWeightInputs() {
@@ -165,8 +204,9 @@ export default function Calorie() {
 
       <NumberInput
         label="Age"
+        unit="yr"
         onValueChange={handleAgeValueChange}
-        onKeyPressed={handleKeyPressedToGoNext}
+        onKeyPressed={handleKeyPressed}
         placeholder="Years"
         min="0"
         max="200"
@@ -185,7 +225,7 @@ export default function Calorie() {
             <NumberInput
               label="Weight"
               onValueChange={handleKilogramValueChange}
-              onKeyPressed={handleKeyPressedToGoNext}
+              onKeyPressed={handleKeyPressed}
               step="0.1"
               max="1000"
               min="0"
@@ -196,7 +236,7 @@ export default function Calorie() {
             <NumberInput
               label="Weight"
               onValueChange={handlePoundValueChange}
-              onKeyPressed={handleKeyPressedToGoNext}
+              onKeyPressed={handleKeyPressed}
               step="0.1"
               max="2000"
               min="0"
@@ -224,7 +264,7 @@ export default function Calorie() {
             <NumberInput
               label="Height"
               onValueChange={handleMeterValueChange}
-              onKeyPressed={handleKeyPressedToTriggerCalculate}
+              onKeyPressed={handleKeyPressed}
               step="0.01"
               max="9"
               min="0"
@@ -236,7 +276,7 @@ export default function Calorie() {
               <NumberInput
                 label="Height"
                 onValueChange={handleFootValueChange}
-                onKeyPressed={handleKeyPressedToGoNext}
+                onKeyPressed={handleKeyPressed}
                 step="1"
                 max="10"
                 min="0"
@@ -246,7 +286,7 @@ export default function Calorie() {
               <NumberInput
                 label=""
                 onValueChange={handleInchValueChange}
-                onKeyPressed={handleKeyPressedToTriggerCalculate}
+                onKeyPressed={handleKeyPressed}
                 step="0.01"
                 max="120"
                 min="0"

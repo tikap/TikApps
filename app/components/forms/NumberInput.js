@@ -28,7 +28,7 @@ export default function NumberInput({
             " h-6 rounded-md text-black text-center text-sm bg-gray-200 focus:bg-gray-100"
           }
         />
-        <span className="mr-2">{unit}</span>
+        <span className={unit ? "mx-2" : "mr-2"}>{unit}</span>
       </label>
     </div>
   );
