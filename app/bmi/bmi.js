@@ -3,10 +3,7 @@
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link.js";
-
-const POUND_TO_KILOGRAM_CONVERSION_RATE = 0.453592;
-const FOOT_TO_INCH_CONVERSION_RATE = 12;
-const INCH_TO_METER_CONVERSION_RATE = 0.0254;
+import { UnitConverters } from "../constants/UnitConverters.js";
 
 //#region Import sub components dynamically
 const RadioTwoOptions = dynamic(
@@ -146,12 +143,12 @@ export default function Bmi() {
   function handleBmiCalculateButtonClick() {
     const weight = isKilogram
       ? Number(kilogramInput)
-      : Number(poundInput) * POUND_TO_KILOGRAM_CONVERSION_RATE;
+      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
 
     const height = isMeter
       ? Number(meterInput)
-      : (Number(footInput) * FOOT_TO_INCH_CONVERSION_RATE + Number(inchInput)) *
-        INCH_TO_METER_CONVERSION_RATE;
+      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
+        UnitConverters.INCH_TO_METER;
 
     var result = weight / height ** 2;
 

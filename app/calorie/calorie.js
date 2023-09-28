@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
+import { UnitConverters } from "../constants/UnitConverters";
 
 //#region Import sub components dynamically
 const RadioTwoOptions = dynamic(
@@ -133,14 +134,21 @@ export default function Calorie() {
 
   // Calculate button
   function handleCalorieCalculateButtonClick() {
-    // debug
-    console.log(sexInput);
-    console.log(ageInput);
-    console.log(kilogramInput);
-    console.log(poundInput);
-    console.log(meterInput);
-    console.log(footInput);
-    console.log(inchInput);
+    var weightInKg = Number(kilogramInput);
+    var heightInCm = Number(meterInput) * UnitConverters.METER_TO_CENTIMETER;
+    var ageinYears = Number(ageInput);
+    var basalMetabolicRate = 0;
+
+    if (sexInput == "Male") {
+      basalMetabolicRate =
+        10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + 5;
+    }
+    if (sexInput == "Female") {
+      basalMetabolicRate =
+        10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears - 161;
+    }
+
+    setCalorieResult(basalMetabolicRate);
     setCalorieResultVisibility(true);
   }
 

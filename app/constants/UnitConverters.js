@@ -1,0 +1,6 @@
+export const UnitConverters = {
+  POUND_TO_KILOGRAM: 0.453592,
+  FOOT_TO_INCH: 12,
+  INCH_TO_METER: 0.0254,
+  METER_TO_CENTIMETER: 100,
+};
