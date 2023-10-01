@@ -134,19 +134,36 @@ export default function Calorie() {
 
   // Calculate button
   function handleCalorieCalculateButtonClick() {
-    var weightInKg = Number(kilogramInput);
-    var heightInCm = Number(meterInput) * UnitConverters.METER_TO_CENTIMETER;
-    var ageinYears = Number(ageInput);
-    var basalMetabolicRate = 0;
+    var weightInKg = isKilogram
+      ? Number(kilogramInput)
+      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
 
-    if (sexInput == "Male") {
-      basalMetabolicRate =
-        10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + 5;
+    var heightInCm = isMeter
+      ? Number(meterInput) * UnitConverters.METER_TO_CENTIMETER
+      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
+        UnitConverters.INCH_TO_METER *
+        UnitConverters.METER_TO_CENTIMETER;
+
+    var ageinYears = Number(ageInput);
+
+    var sexOffset = 0;
+
+    switch (sexInput) {
+      case "Male":
+        sexOffset = 5;
+        break;
+      case "Female":
+        sexOffset = -161;
+        break;
+      default:
+        sexOffset = 0;
     }
-    if (sexInput == "Female") {
-      basalMetabolicRate =
-        10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears - 161;
-    }
+
+    console.log(sexOffset);
+    var basalMetabolicRate =
+      10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + sexOffset;
+
+    basalMetabolicRate = Math.round(basalMetabolicRate * 100) / 100; // Round to nearest 2 decimal places
 
     setCalorieResult(basalMetabolicRate);
     setCalorieResultVisibility(true);
