@@ -30,6 +30,14 @@ const CalorieResult = dynamic(() => import("./calorieResult"), {
   loading: () => <p className="my-4">Loading...</p>,
   ssr: false,
 });
+
+const DropDownWithSecondaryText = dynamic(
+  () => import("../components/forms/DropDownWithSecondaryText"),
+  {
+    loading: () => <p className="my-4">Loading...</p>,
+    ssr: false,
+  }
+);
 //#endregion
 
 // Main component
@@ -53,6 +61,35 @@ export default function Calorie() {
 
   // References
   const calorieResultElementRef = useRef(null);
+
+  // Drop down options
+  const dropDownOptions = [
+    {
+      value: "sedentary",
+      display: "Sedentary",
+      secondaryDisplay: "Minimal or no exercise.",
+    },
+    {
+      value: "lightlyActive",
+      display: "Lightly Active",
+      secondaryDisplay: "One to three days weekly exercise.",
+    },
+    {
+      value: "moderatelyActive",
+      display: "Moderately Active",
+      secondaryDisplay: "Four to five days weekly exercise.",
+    },
+    {
+      value: "veryActive",
+      display: "Very Active",
+      secondaryDisplay: "Six days a week or daily exercise.",
+    },
+    {
+      value: "extraActive",
+      display: "Extra Active",
+      secondaryDisplay: "Exceptionally active or physical job.",
+    },
+  ];
 
   // UI event handlers
   // Sex assigned at birth
@@ -328,6 +365,11 @@ export default function Calorie() {
           onOptionChanged={handleHeightUnitChange}
         />
       </div>
+
+      <DropDownWithSecondaryText
+        dropDownLabel="Activity Level"
+        options={dropDownOptions}
+      />
 
       <CalculateButton
         label="Calculate"
