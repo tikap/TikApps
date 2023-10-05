@@ -285,8 +285,8 @@ export default function Bmi() {
       </div>
 
       <Link
-        className="block underline underline-offset-4 mt-8"
         href="./about#BodyMassIndexCalculator"
+        className="block mt-4 text-secondary transition duration-150 ease-in-out hover:text-secondary-600 focus:text-secondary-600 active:text-secondary-700"
       >
         FAQ: Learn more about BMI
       </Link>
