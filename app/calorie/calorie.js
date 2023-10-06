@@ -51,6 +51,7 @@ export default function Calorie() {
   const [footInput, setFootInput] = useState(Number(0));
   const [inchInput, setInchInput] = useState(Number(0));
   const [calorieResult, setCalorieResult] = useState(Number(0));
+  const [activityLevel, setActivityLevel] = useState(null);
 
   // Unit states
   const [isKilogram, setIsKilogram] = useState(true);
@@ -72,22 +73,22 @@ export default function Calorie() {
     {
       value: "lightlyActive",
       display: "Lightly Active",
-      secondaryDisplay: "One to three days weekly exercise.",
+      secondaryDisplay: "Exercise 1 to 3 days a week.",
     },
     {
       value: "moderatelyActive",
       display: "Moderately Active",
-      secondaryDisplay: "Four to five days weekly exercise.",
+      secondaryDisplay: "Exercise 4 to 5 days  a week.",
     },
     {
       value: "veryActive",
       display: "Very Active",
-      secondaryDisplay: "Six days a week or daily exercise.",
+      secondaryDisplay: "Exercise 6 to 7 days a week.",
     },
     {
       value: "extraActive",
       display: "Extra Active",
-      secondaryDisplay: "Exceptionally active or physical job.",
+      secondaryDisplay: "Physical job.",
     },
   ];
 
@@ -169,6 +170,30 @@ export default function Calorie() {
     }
   }
 
+  // Activity level
+  function handleActivityLevelChange(event) {
+    switch (event.target.value) {
+      case "sedentary":
+        setActivityLevel("sedentary");
+        break;
+      case "lightlyActive":
+        setActivityLevel("lightlyActive");
+        break;
+      case "moderatelyActive":
+        setActivityLevel("moderatelyActive");
+        break;
+      case "veryActive":
+        setActivityLevel("veryActive");
+        break;
+      case "extraActive":
+        setActivityLevel("extraActive");
+        break;
+      default:
+        setActivityLevel(null);
+        break;
+    }
+  }
+
   // Calculate button
   function handleCalorieCalculateButtonClick() {
     var weightInKg = isKilogram
@@ -196,9 +221,32 @@ export default function Calorie() {
         sexOffset = 0;
     }
 
-    console.log(sexOffset);
+    var activityFactor = 1;
+
+    switch (activityLevel) {
+      case "sedentary":
+        activityFactor = 1.2;
+        break;
+      case "lightlyActive":
+        activityFactor = 1.375;
+        break;
+      case "moderatelyActive":
+        activityFactor = 1.55;
+        break;
+      case "veryActive":
+        activityFactor = 1.725;
+        break;
+      case "extraActive":
+        activityFactor = 1.9;
+        break;
+      default:
+        activityFactor = 1;
+        break;
+    }
+
     var basalMetabolicRate =
-      10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + sexOffset;
+      (10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + sexOffset) *
+      activityFactor;
 
     basalMetabolicRate = Math.round(basalMetabolicRate * 100) / 100; // Round to nearest 2 decimal places
 
@@ -369,6 +417,7 @@ export default function Calorie() {
       <DropDownWithSecondaryText
         dropDownLabel="Activity Level"
         options={dropDownOptions}
+        onValueChange={handleActivityLevelChange}
       />
 
       <CalculateButton

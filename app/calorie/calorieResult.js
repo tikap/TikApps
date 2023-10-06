@@ -19,12 +19,16 @@ export default function CalorieResult({ resultValue, referenceToThisElement }) {
         </div>
         <div className="block m-8">
           <p>
-            This is per
-            <span className="font-bold mx-1">day.</span>
+            To lose weight:
+            <span className="font-bold mx-1">
+              {Math.round(resultValue * 0.9 * 100) / 100}
+            </span>
           </p>
           <p>
-            With some
-            <span className="font-bold mx-1">variations.</span>
+            To gain weight:
+            <span className="font-bold mx-1">
+              {Math.round(resultValue * 1.1 * 100) / 100}
+            </span>
           </p>
         </div>
       </div>

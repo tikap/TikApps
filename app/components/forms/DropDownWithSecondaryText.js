@@ -2,7 +2,11 @@ import { useEffect } from "react";
 
 // Options are an array of object with properties value, display and secondaryDisplay
 // For example: {value: "One", display: "Option One", secondaryDisplay: "Option One Description"}
-export default function DropDownWithSecondaryText({ dropDownLabel, options }) {
+export default function DropDownWithSecondaryText({
+  dropDownLabel,
+  options,
+  onValueChange,
+}) {
   useEffect(() => {
     const init = async () => {
       const { Select, initTE } = await import("tw-elements");
@@ -19,6 +23,7 @@ export default function DropDownWithSecondaryText({ dropDownLabel, options }) {
         data-te-select-init
         data-te-select-placeholder="select an option"
         data-te-select-option-height="52"
+        onChange={onValueChange}
       >
         {options.map(({ value, display, secondaryDisplay }, index) => (
           <option
