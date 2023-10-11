@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { UnitConverters } from "../constants/UnitConverters";
 
@@ -50,8 +50,34 @@ export default function Calorie() {
   const [meterInput, setMeterInput] = useState(Number(0));
   const [footInput, setFootInput] = useState(Number(0));
   const [inchInput, setInchInput] = useState(Number(0));
-  const [calorieResult, setCalorieResult] = useState(Number(0));
   const [activityLevel, setActivityLevel] = useState(null);
+  const [calorieResult, setCalorieResult] = useState(Number(0));
+
+  // Input Validity Tracker
+  const [inputsAreValid, setInputsAreValid] = useState(false);
+  useEffect(() => {
+    if (
+      sexInput != null &&
+      ageInput > 0 &&
+      (kilogramInput > 0 || poundInput > 0) &&
+      (meterInput > 0 || footInput > 0 || inchInput > 0) &&
+      activityLevel != null
+    ) {
+      setInputsAreValid(true);
+    } else {
+      setInputsAreValid(false);
+    }
+  }, [
+    sexInput,
+    ageInput,
+    kilogramInput,
+    poundInput,
+    meterInput,
+    footInput,
+    inchInput,
+    calorieResult,
+    activityLevel,
+  ]);
 
   // Unit states
   const [isKilogram, setIsKilogram] = useState(true);
@@ -196,18 +222,6 @@ export default function Calorie() {
 
   // Calculate button
   function handleCalorieCalculateButtonClick() {
-    var weightInKg = isKilogram
-      ? Number(kilogramInput)
-      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
-
-    var heightInCm = isMeter
-      ? Number(meterInput) * UnitConverters.METER_TO_CENTIMETER
-      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
-        UnitConverters.INCH_TO_METER *
-        UnitConverters.METER_TO_CENTIMETER;
-
-    var ageinYears = Number(ageInput);
-
     var sexOffset = 0;
 
     switch (sexInput) {
@@ -220,6 +234,18 @@ export default function Calorie() {
       default:
         sexOffset = 0;
     }
+
+    var ageinYears = Number(ageInput);
+
+    var weightInKg = isKilogram
+      ? Number(kilogramInput)
+      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
+
+    var heightInCm = isMeter
+      ? Number(meterInput) * UnitConverters.METER_TO_CENTIMETER
+      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
+        UnitConverters.INCH_TO_METER *
+        UnitConverters.METER_TO_CENTIMETER;
 
     var activityFactor = 1;
 
@@ -244,11 +270,15 @@ export default function Calorie() {
         break;
     }
 
+    console.log("InputsAreValid value: " + inputsAreValid);
+
     var basalMetabolicRate =
       (10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + sexOffset) *
       activityFactor;
 
-    basalMetabolicRate = Math.round(basalMetabolicRate * 100) / 100; // Round to nearest 2 decimal places
+    basalMetabolicRate = inputsAreValid
+      ? Math.round(basalMetabolicRate * 100) / 100 // Round to nearest 2 decimal places
+      : null;
 
     setCalorieResult(basalMetabolicRate);
     setCalorieResultVisibility(true);
