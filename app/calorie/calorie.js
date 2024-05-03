@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link.js";
 import { UnitConverters } from "../constants/UnitConverters";
 
 //#region Import sub components dynamically
@@ -463,6 +464,13 @@ export default function Calorie() {
           />
         ) : null}
       </div>
+
+      <Link
+        href="./about#DailyCalorieCalculator"
+        className="block mt-4 text-secondary transition duration-150 ease-in-out hover:text-secondary-600 focus:text-secondary-600 active:text-secondary-700"
+      >
+        FAQ: Learn more about Daily Calorie Calculator
+      </Link>
     </div>
   );
 }

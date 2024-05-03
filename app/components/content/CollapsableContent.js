@@ -45,7 +45,7 @@ export default function CollapsableContent({
               className="!visible hidden border-0"
               data-te-collapse-item
               aria-labelledby="flush-headingOne"
-              data-te-parent="#accordionFlushExample"
+              data-te-parent={"#" + uniqueId}
             >
               <div className="py-4 px-5 text-neutral-300">{content}</div>
             </div>
