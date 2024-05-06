@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import Link from "next/link";
 
+import Image from "next/image";
+import TikAppsLogo from "../../logo/Logo Bundle/default_transparent_just_logo.png";
+
 export default function Home() {
   useEffect(() => {
     const init = async () => {
@@ -14,6 +17,9 @@ export default function Home() {
 
   return (
     <>
+      <div className="flex justify-center min-w-max mb-6">
+        <Image src={TikAppsLogo} alt="TikApps Logo" />
+      </div>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
       <h4 className="mb-6 text-xl">
         Free, easy and accessible tools for your health.
