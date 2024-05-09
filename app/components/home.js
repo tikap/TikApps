@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 import Image from "next/image";
-import TikAppsLogo from "../../logo/Logo Bundle/default_transparent_just_logo.png";
+import TikAppsLogo from "../resources/logo/Logo Bundle/default_transparent_just_logo.png";
 
 export default function Home() {
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Home() {
       </div>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
       <h4 className="mb-6 text-xl">
-        Free, easy and accessible tools for your health.
+        Free, easy and accessible tools for your life.
       </h4>
 
       <Link href="./about">
