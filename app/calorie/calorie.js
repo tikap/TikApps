@@ -1,45 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link.js";
-import { UnitConverters } from "../constants/UnitConverters";
 
-//#region Import sub components dynamically
-const RadioTwoOptions = dynamic(
-  () => import("../components/forms/RadioTwoOptions"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-
-const NumberInput = dynamic(() => import("../components/forms/NumberInput"), {
-  loading: () => <p className="my-4">Loading...</p>,
-  ssr: false,
-});
-
-const CalculateButton = dynamic(
-  () => import("../components/forms/CalculateButton"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-
-const CalorieResult = dynamic(() => import("./calorieResult"), {
-  loading: () => <p className="my-4">Loading...</p>,
-  ssr: false,
-});
-
-const DropDownWithSecondaryText = dynamic(
-  () => import("../components/forms/DropDownWithSecondaryText"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-//#endregion
+import { UnitConverters } from "@/constants/UnitConverters";
+import RadioTwoOptions from "@/components/forms/RadioTwoOptions";
+import NumberInput from "@/components/forms/NumberInput";
+import DropDownWithSecondaryText from "@/components/forms/DropDownWithSecondaryText";
+import CalculateButton from "@/components/forms/CalculateButton";
+import CalorieResult from "./calorieResult";
 
 // Main component
 export default function Calorie() {

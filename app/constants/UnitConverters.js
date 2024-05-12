@@ -1,7 +1,9 @@
 export const UnitConverters = {
+  // weight
   KILOGRAM_TO_POUND: 2.20462262185,
   POUND_TO_KILOGRAM: 0.45359237,
 
+  // length
   FOOT_TO_INCH: 12,
   INCH_TO_FOOT: 0.08333333333,
 

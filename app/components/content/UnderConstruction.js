@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import TrafficCone from "../../resources/images/traffic_cone_32px.png";
+import TrafficCone from "@/resources/images/traffic_cone_32px.png";
 
 export default function UnderConstruction() {
   return (

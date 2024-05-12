@@ -1,5 +1,5 @@
-import CollapsableContent from "../components/content/CollapsableContent";
 import Link from "next/link";
+import CollapsableContent from "@/components/content/CollapsableContent";
 
 export default function About() {
   return (

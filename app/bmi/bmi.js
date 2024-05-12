@@ -1,40 +1,13 @@
 "use client";
 
 import { useState, useRef } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link.js";
-import { UnitConverters } from "../constants/UnitConverters.js";
 
-//#region Import sub components dynamically
-const RadioTwoOptions = dynamic(
-  () => import("../components/forms/RadioTwoOptions.js"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-
-const NumberInput = dynamic(
-  () => import("../components/forms/NumberInput.js"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-
-const BmiCalculateButton = dynamic(
-  () => import("../components/forms/CalculateButton.js"),
-  {
-    loading: () => <p className="my-4">Loading...</p>,
-    ssr: false,
-  }
-);
-
-const BmiResult = dynamic(() => import("./bmiResult.js"), {
-  loading: () => <p className="my-4">Loading...</p>,
-  ssr: false,
-});
-//#endregion
+import { UnitConverters } from "@/constants/UnitConverters.js";
+import RadioTwoOptions from "@/components/forms/RadioTwoOptions.js";
+import NumberInput from "@/components/forms/NumberInput.js";
+import BmiCalculateButton from "@/components/forms/CalculateButton.js";
+import BmiResult from "./bmiResult.js";
 
 // Main component
 export default function Bmi() {

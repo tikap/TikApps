@@ -1,20 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import dynamic from "next/dynamic.js";
 
-// Import sub components dynamically
-const ContactForm = dynamic(() => import("./ContactForm.js"), {
-  loading: () => <p className="my-4">Loading...</p>,
-  ssr: false,
-});
-
-const SimpleCard = dynamic(
-  () => import("../components/content/SimpleCard.js"),
-  {
-    ssr: false,
-  }
-);
+import SimpleCard from "@/components/content/SimpleCard.js";
+import ContactForm from "./ContactForm.js";
 
 // Main component
 export default function Contact() {

@@ -9,8 +9,8 @@ export const metadata = {
 };
 
 // Import sub components
-import Header from "./components/navigation/header";
-import Footer from "./components/navigation/footer";
+import Header from "@/components/navigation/header";
+import Footer from "@/components/navigation/footer";
 
 // Export this main component
 export default function RootLayout({ children }) {

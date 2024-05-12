@@ -1,7 +1,8 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 import { render } from "@react-email/render";
-import ContactSubmitEmail from "@/app/components/emails/ContactSubmitEmail";
+
+import ContactSubmitEmail from "@/components/emails/ContactSubmitEmail";
 
 export async function POST(req) {
   const request = await req.json();

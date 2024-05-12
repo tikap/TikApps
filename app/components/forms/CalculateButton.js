@@ -1,6 +1,9 @@
 "use client";
 
-export default function CalculateButton({ label, onCalculateButtonClick }) {
+export default function CalculateButton({
+  label = "Calculate",
+  onCalculateButtonClick,
+}) {
   return (
     <button
       type="button"
