@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 import Image from "next/image";
-import TikAppsLogo from "../resources/logo/Logo Bundle/default_transparent_just_logo.png";
+import TikAppsLogo from "./resources/logo/default_transparent_just_logo.png";
 
 export default function Home() {
   useEffect(() => {

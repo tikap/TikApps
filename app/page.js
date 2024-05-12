@@ -12,7 +12,7 @@ const MainWrapper = dynamic(
   }
 );
 
-const Home = dynamic(() => import("./components/home.js"), {
+const Home = dynamic(() => import("./home.js"), {
   loading: () => <PageLoadingWrapper loadingText="Loading..." />,
   ssr: false,
 });
