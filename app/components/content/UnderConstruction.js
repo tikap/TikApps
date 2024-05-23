@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import TrafficCone from "@/resources/images/traffic_cone_32px.png";
+import UnderConstructionImage from "@/resources/images/under_construction_512x512.png";
 
 export default function UnderConstruction() {
   return (
-    <div className="py-20 flex justify-center space-x-8">
-      <div className="min-w-max">
-        <Image src={TrafficCone} alt="Traffic Cone Icon" />
-      </div>
-      <div className="text-lg"> Work in progress ...</div>
-      <div className="min-w-max">
-        <Image src={TrafficCone} alt="Traffic Cone Icon" />
+    <div className="py-20 flex justify-center">
+      <div className="justify-items-center space-y-10">
+        <Image
+          src={UnderConstructionImage}
+          alt="Under Construction Sign"
+          height={150}
+          width={150}
+        />
+        <div className="text-lg">Work in progress</div>
       </div>
     </div>
   );
