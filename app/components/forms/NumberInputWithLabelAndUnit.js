@@ -1,4 +1,4 @@
-export default function NumberInput({
+export default function NumberInputWithLabelAndUnit({
   label,
   unit,
   onValueChange,

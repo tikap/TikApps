@@ -5,7 +5,7 @@ import Link from "next/link.js";
 
 import { UnitConverters } from "@/constants/UnitConverters.js";
 import RadioTwoOptions from "@/components/forms/RadioTwoOptions.js";
-import NumberInput from "@/components/forms/NumberInput.js";
+import NumberInputWithLabelAndUnit from "@/components/forms/NumberInputWithLabelAndUnit.js";
 import BmiCalculateButton from "@/components/forms/CalculateButton.js";
 import BmiResult from "./bmiResult.js";
 
@@ -161,7 +161,7 @@ export default function Bmi() {
           }}
         >
           {isKilogram ? (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Weight"
               onValueChange={handleKilogramValueChange}
               onKeyPressed={handleKeyPressed}
@@ -172,7 +172,7 @@ export default function Bmi() {
               placeholder="Kilograms"
             />
           ) : (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Weight"
               onValueChange={handlePoundValueChange}
               onKeyPressed={handleKeyPressed}
@@ -200,7 +200,7 @@ export default function Bmi() {
           }}
         >
           {isMeter ? (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Height"
               onValueChange={handleMeterValueChange}
               onKeyPressed={handleKeyPressed}
@@ -212,7 +212,7 @@ export default function Bmi() {
             />
           ) : (
             <div className="flex justify-center items-center">
-              <NumberInput
+              <NumberInputWithLabelAndUnit
                 label="Height"
                 onValueChange={handleFootValueChange}
                 onKeyPressed={handleKeyPressed}
@@ -222,7 +222,7 @@ export default function Bmi() {
                 width="w-14"
                 placeholder="Feet"
               />
-              <NumberInput
+              <NumberInputWithLabelAndUnit
                 label=""
                 onValueChange={handleInchValueChange}
                 onKeyPressed={handleKeyPressed}

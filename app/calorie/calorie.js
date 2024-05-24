@@ -5,7 +5,7 @@ import Link from "next/link.js";
 
 import { UnitConverters } from "@/constants/UnitConverters";
 import RadioTwoOptions from "@/components/forms/RadioTwoOptions";
-import NumberInput from "@/components/forms/NumberInput";
+import NumberInputWithLabelAndUnit from "@/components/forms/NumberInputWithLabelAndUnit";
 import DropDownWithSecondaryText from "@/components/forms/DropDownWithSecondaryText";
 import CalculateButton from "@/components/forms/CalculateButton";
 import CalorieResult from "./calorieResult";
@@ -312,7 +312,7 @@ export default function Calorie() {
         />
       </div>
 
-      <NumberInput
+      <NumberInputWithLabelAndUnit
         label="Age"
         unit="yr"
         onValueChange={handleAgeValueChange}
@@ -332,7 +332,7 @@ export default function Calorie() {
           }}
         >
           {isKilogram ? (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Weight"
               onValueChange={handleKilogramValueChange}
               onKeyPressed={handleKeyPressed}
@@ -343,7 +343,7 @@ export default function Calorie() {
               placeholder="Kilograms"
             />
           ) : (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Weight"
               onValueChange={handlePoundValueChange}
               onKeyPressed={handleKeyPressed}
@@ -371,7 +371,7 @@ export default function Calorie() {
           }}
         >
           {isMeter ? (
-            <NumberInput
+            <NumberInputWithLabelAndUnit
               label="Height"
               onValueChange={handleMeterValueChange}
               onKeyPressed={handleKeyPressed}
@@ -383,7 +383,7 @@ export default function Calorie() {
             />
           ) : (
             <div className="flex justify-center items-center">
-              <NumberInput
+              <NumberInputWithLabelAndUnit
                 label="Height"
                 onValueChange={handleFootValueChange}
                 onKeyPressed={handleKeyPressed}
@@ -393,7 +393,7 @@ export default function Calorie() {
                 width="w-14"
                 placeholder="Feet"
               />
-              <NumberInput
+              <NumberInputWithLabelAndUnit
                 label=""
                 onValueChange={handleInchValueChange}
                 onKeyPressed={handleKeyPressed}
