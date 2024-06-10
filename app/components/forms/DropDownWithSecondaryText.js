@@ -19,7 +19,7 @@ export default function DropDownWithSecondaryText({
     <div className="flex items-center pb-8">
       <span className="mr-2">{dropDownLabel}</span>
       <select
-        className="w-auto"
+        className="w-auto text-black"
         data-te-select-init
         data-te-select-placeholder="select an option"
         data-te-select-option-height="52"
