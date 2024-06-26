@@ -1,10 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
+export const revalidate = 0;
+
+import dynamicImport from "next/dynamic";
 import PageLoadingWrapper from "@/components/wrappers/pageloadingwrapper.js";
 
 // Import sub components dynamically
-const MainWrapper = dynamic(
+const MainWrapper = dynamicImport(
   () => import("@/components/wrappers/mainwrapper.js"),
   {
     loading: () => <PageLoadingWrapper loadingText="Loading..." />,
@@ -12,7 +14,7 @@ const MainWrapper = dynamic(
   }
 );
 
-const Home = dynamic(() => import("./home.js"), {
+const Home = dynamicImport(() => import("./home.js"), {
   loading: () => <PageLoadingWrapper loadingText="Loading..." />,
   ssr: false,
 });
