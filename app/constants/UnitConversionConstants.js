@@ -1,4 +1,4 @@
-export const UnitConverters = {
+export const UnitConversionConstants = {
   // weight
   KILOGRAM_TO_POUND: 2.20462262185,
   POUND_TO_KILOGRAM: 0.45359237,

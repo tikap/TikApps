@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link.js";
 
-import { UnitConverters } from "@/constants/UnitConverters";
+import { UnitConversionConstants } from "@/constants/UnitConversionConstants";
 import RadioTwoOptions from "@/components/forms/RadioTwoOptions";
 import NumberInputWithLabelAndUnit from "@/components/forms/NumberInputWithLabelAndUnit";
 import DropDownWithSecondaryText from "@/components/forms/DropDownWithSecondaryText";
@@ -209,13 +209,14 @@ export default function Calorie() {
 
     var weightInKg = isKilogram
       ? Number(kilogramInput)
-      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
+      : Number(poundInput) * UnitConversionConstants.POUND_TO_KILOGRAM;
 
     var heightInCm = isMeter
-      ? Number(meterInput) * UnitConverters.METER_TO_CENTIMETER
-      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
-        UnitConverters.INCH_TO_METER *
-        UnitConverters.METER_TO_CENTIMETER;
+      ? Number(meterInput) * UnitConversionConstants.METER_TO_CENTIMETER
+      : (Number(footInput) * UnitConversionConstants.FOOT_TO_INCH +
+          Number(inchInput)) *
+        UnitConversionConstants.INCH_TO_METER *
+        UnitConversionConstants.METER_TO_CENTIMETER;
 
     var activityFactor = 1;
 
@@ -239,8 +240,6 @@ export default function Calorie() {
         activityFactor = 1;
         break;
     }
-
-    console.log("InputsAreValid value: " + inputsAreValid);
 
     var basalMetabolicRate =
       (10 * weightInKg + 6.25 * heightInCm - 5 * ageinYears + sexOffset) *

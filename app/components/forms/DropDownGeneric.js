@@ -5,16 +5,8 @@ import { useEffect } from "react";
 export default function DropDownGeneric({
   dropDownLabel,
   placeholder = "select an option",
-  options = [
-    {
-      value: "Option 1",
-      display: "Option 1",
-    },
-    {
-      value: "Option 2",
-      display: "Option 2",
-    },
-  ],
+  options,
+  selectedValue,
   onValueChange,
 }) {
   useEffect(() => {
@@ -33,6 +25,7 @@ export default function DropDownGeneric({
         data-te-select-init
         data-te-select-placeholder={placeholder}
         data-te-select-option-height="35"
+        value={selectedValue}
         onChange={onValueChange}
       >
         {options.map(({ value, display }, index) => (

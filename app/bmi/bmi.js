@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link.js";
 
-import { UnitConverters } from "@/constants/UnitConverters.js";
+import { UnitConversionConstants } from "@/constants/UnitConversionConstants.js";
 import RadioTwoOptions from "@/components/forms/RadioTwoOptions.js";
 import NumberInputWithLabelAndUnit from "@/components/forms/NumberInputWithLabelAndUnit.js";
 import BmiCalculateButton from "@/components/forms/CalculateButton.js";
@@ -116,12 +116,13 @@ export default function Bmi() {
   function handleBmiCalculateButtonClick() {
     const weight = isKilogram
       ? Number(kilogramInput)
-      : Number(poundInput) * UnitConverters.POUND_TO_KILOGRAM;
+      : Number(poundInput) * UnitConversionConstants.POUND_TO_KILOGRAM;
 
     const height = isMeter
       ? Number(meterInput)
-      : (Number(footInput) * UnitConverters.FOOT_TO_INCH + Number(inchInput)) *
-        UnitConverters.INCH_TO_METER;
+      : (Number(footInput) * UnitConversionConstants.FOOT_TO_INCH +
+          Number(inchInput)) *
+        UnitConversionConstants.INCH_TO_METER;
 
     var result = weight / height ** 2;
 
