@@ -60,7 +60,11 @@ export default function Unit() {
     setInputNumber(event.target.value);
   }
 
-  function handleNumberInputKeyPressed(event) {}
+  function handleNumberInputKeyPressed(event) {
+    if (event.key == "Enter") {
+      handleUnitConvertCalculateButtonClick();
+    }
+  }
 
   function handleConvertFromUnitChange(event) {
     setResultIsVisible(false);
@@ -106,7 +110,7 @@ export default function Unit() {
         />
 
         <DropDown
-          placeholder="Select Unit"
+          placeholder="Select"
           options={fromUnits}
           onValueChange={handleConvertFromUnitChange}
         />
@@ -115,7 +119,7 @@ export default function Unit() {
       <div className="flex flex-row justify-center space-x-5 items-center">
         <div>Convert to:</div>
         <DropDown
-          placeholder="Select Unit"
+          placeholder="Select"
           options={toUnits}
           selectedValue={selectedToUnit}
           onValueChange={handleConvertToUnitChange}
