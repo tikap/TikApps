@@ -19,5 +19,14 @@ export const UnitConverter = (number, convertFrom, convertTo) => {
         case "kg":
           return number * UnitConversionConstants.POUND_TO_KILOGRAM;
       }
+
+    // Meters
+    case "m":
+      switch (convertTo) {
+        case "cm":
+          return number * UnitConversionConstants.METER_TO_CENTIMETER;
+        case "inch":
+          return number * UnitConversionConstants.METER_TO_INCH;
+      }
   }
 };

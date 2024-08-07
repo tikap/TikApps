@@ -21,6 +21,10 @@ export default function Unit() {
       value: "lbs",
       display: "Pounds",
     },
+    {
+      value: "m",
+      display: "Meter",
+    },
   ]);
   const [toUnits, setToUnits] = useState([]);
   const [selectedFromUnit, setSelectedFromUnit] = useState("");
@@ -49,6 +53,19 @@ export default function Unit() {
           },
         ]);
         setSelectedToUnit("kg");
+        break;
+      case "m":
+        setToUnits([
+          {
+            value: "cm",
+            display: "Centimeters",
+          },
+          {
+            value: "inch",
+            display: "Inches",
+          },
+        ]);
+        setSelectedToUnit("m");
         break;
       default:
         break;
