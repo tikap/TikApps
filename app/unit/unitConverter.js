@@ -28,5 +28,21 @@ export const UnitConverter = (number, convertFrom, convertTo) => {
         case "inch":
           return number * UnitConversionConstants.METER_TO_INCH;
       }
+
+    // Foot
+    case "ft":
+      switch (convertTo) {
+        case "inch":
+          return number * UnitConversionConstants.FOOT_TO_INCH;
+      }
+
+    // Inch
+    case "inch":
+      switch (convertTo) {
+        case "ft":
+          return number * UnitConversionConstants.INCH_TO_FOOT;
+        case "m":
+          return number * UnitConversionConstants.INCH_TO_METER;
+      }
   }
 };

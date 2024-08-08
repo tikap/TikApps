@@ -25,6 +25,14 @@ export default function Unit() {
       value: "m",
       display: "Meter",
     },
+    {
+      value: "ft",
+      display: "Foot",
+    },
+    {
+      value: "inch",
+      display: "Inch",
+    },
   ]);
   const [toUnits, setToUnits] = useState([]);
   const [selectedFromUnit, setSelectedFromUnit] = useState("");
@@ -36,6 +44,7 @@ export default function Unit() {
   // Effects
   useEffect(() => {
     switch (selectedFromUnit) {
+      // Kilograms
       case "kg":
         setToUnits([
           {
@@ -45,6 +54,8 @@ export default function Unit() {
         ]);
         setSelectedToUnit("lbs");
         break;
+
+      // Pounds
       case "lbs":
         setToUnits([
           {
@@ -54,6 +65,8 @@ export default function Unit() {
         ]);
         setSelectedToUnit("kg");
         break;
+
+      // Meters
       case "m":
         setToUnits([
           {
@@ -65,7 +78,33 @@ export default function Unit() {
             display: "Inches",
           },
         ]);
-        setSelectedToUnit("m");
+        setSelectedToUnit("cm");
+        break;
+
+      // Foot
+      case "ft":
+        setToUnits([
+          {
+            value: "inch",
+            display: "Inches",
+          },
+        ]);
+        setSelectedToUnit("inch");
+        break;
+
+      // Inches
+      case "inch":
+        setToUnits([
+          {
+            value: "ft",
+            display: "Foot",
+          },
+          {
+            value: "m",
+            display: "Meters",
+          },
+        ]);
+        setSelectedToUnit("ft");
         break;
       default:
         break;
