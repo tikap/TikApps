@@ -207,6 +207,7 @@ export default function Unit() {
           placeholder="Select"
           options={fromUnits}
           onValueChange={handleConvertFromUnitChange}
+          visibleOptions="10"
         />
       </div>
 
@@ -217,6 +218,7 @@ export default function Unit() {
           options={toUnits}
           selectedValue={selectedToUnit}
           onValueChange={handleConvertToUnitChange}
+          visibleOptions="10"
         />
       </div>
 

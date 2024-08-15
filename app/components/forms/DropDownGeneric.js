@@ -8,6 +8,7 @@ export default function DropDownGeneric({
   options,
   selectedValue,
   onValueChange,
+  visibleOptions,
 }) {
   useEffect(() => {
     const init = async () => {
@@ -25,6 +26,7 @@ export default function DropDownGeneric({
         data-te-select-init
         data-te-select-placeholder={placeholder}
         data-te-select-option-height="35"
+        data-te-select-visible-options={visibleOptions}
         value={selectedValue}
         onChange={onValueChange}
       >
