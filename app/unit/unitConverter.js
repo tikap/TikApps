@@ -44,5 +44,23 @@ export const UnitConverter = (number, convertFrom, convertTo) => {
         case "m":
           return number * UnitConversionConstants.INCH_TO_METER;
       }
+
+    // Celcius
+    case "C":
+      switch (convertTo) {
+        case "F":
+          return number * (9 / 5) + 32;
+        case "K":
+          return number + 273.15;
+      }
+
+    // Fahrenheit
+    case "F":
+      switch (convertTo) {
+        case "C":
+          return (number - 32) * (5 / 9);
+        case "K":
+          return (number - 32) * (5 / 9) + 273.15;
+      }
   }
 };

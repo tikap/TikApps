@@ -33,6 +33,14 @@ export default function Unit() {
       value: "inch",
       display: "Inch",
     },
+    {
+      value: "C",
+      display: "Celcius",
+    },
+    {
+      value: "F",
+      display: "Fahrenheit",
+    },
   ]);
   const [toUnits, setToUnits] = useState([]);
   const [selectedFromUnit, setSelectedFromUnit] = useState("");
@@ -105,6 +113,36 @@ export default function Unit() {
           },
         ]);
         setSelectedToUnit("ft");
+        break;
+
+      // Celcius
+      case "C":
+        setToUnits([
+          {
+            value: "F",
+            display: "Fahrenheit",
+          },
+          {
+            value: "K",
+            display: "Kelvin",
+          },
+        ]);
+        setSelectedToUnit("F");
+        break;
+
+      // Fahrenheit
+      case "F":
+        setToUnits([
+          {
+            value: "C",
+            display: "Celcius",
+          },
+          {
+            value: "K",
+            display: "Kelvin",
+          },
+        ]);
+        setSelectedToUnit("C");
         break;
       default:
         break;

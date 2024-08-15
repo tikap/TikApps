@@ -90,7 +90,7 @@ export default function Header() {
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
-                  Metric Imperial Unit Converter
+                  Unit Converter
                 </Link>
               </li>
             </ul>
