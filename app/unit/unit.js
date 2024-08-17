@@ -5,43 +5,16 @@ import { useState, useEffect, useRef } from "react";
 import NumberInput from "@/components/forms/NumberInputGeneric.js";
 import DropDown from "@/components/forms/DropDownGeneric.js";
 import CalculateButton from "@/components/forms/CalculateButton.js";
-import { UnitConverter } from "./unitConverter";
+
 import UnitConvertedResult from "./unitConvertedResult";
+import { UnitConverter } from "./unitConverter";
+import { FromUnits } from "./fromUnits";
 
 // Main component
 export default function Unit() {
   // States and references
   const [inputNumber, setInputNumber] = useState(Number(0));
-  const [fromUnits] = useState([
-    {
-      value: "kg",
-      display: "Kilograms",
-    },
-    {
-      value: "lbs",
-      display: "Pounds",
-    },
-    {
-      value: "m",
-      display: "Meter",
-    },
-    {
-      value: "ft",
-      display: "Foot",
-    },
-    {
-      value: "inch",
-      display: "Inch",
-    },
-    {
-      value: "C",
-      display: "Celcius",
-    },
-    {
-      value: "F",
-      display: "Fahrenheit",
-    },
-  ]);
+  const [fromUnits] = useState(FromUnits);
   const [toUnits, setToUnits] = useState([]);
   const [selectedFromUnit, setSelectedFromUnit] = useState("");
   const [selectedToUnit, setSelectedToUnit] = useState("");
@@ -57,7 +30,7 @@ export default function Unit() {
         setToUnits([
           {
             value: "lbs",
-            display: "Pounds",
+            display: "Pounds (lbs)",
           },
         ]);
         setSelectedToUnit("lbs");
@@ -68,7 +41,7 @@ export default function Unit() {
         setToUnits([
           {
             value: "kg",
-            display: "Kilograms",
+            display: "Kilograms (kg)",
           },
         ]);
         setSelectedToUnit("kg");
@@ -79,11 +52,11 @@ export default function Unit() {
         setToUnits([
           {
             value: "cm",
-            display: "Centimeters",
+            display: "Centimeters (cm)",
           },
           {
             value: "inch",
-            display: "Inches",
+            display: "Inches (inch)",
           },
         ]);
         setSelectedToUnit("cm");
@@ -94,7 +67,7 @@ export default function Unit() {
         setToUnits([
           {
             value: "inch",
-            display: "Inches",
+            display: "Inches (inch)",
           },
         ]);
         setSelectedToUnit("inch");
@@ -105,11 +78,11 @@ export default function Unit() {
         setToUnits([
           {
             value: "ft",
-            display: "Foot",
+            display: "Foot (ft)",
           },
           {
             value: "m",
-            display: "Meters",
+            display: "Meters (m)",
           },
         ]);
         setSelectedToUnit("ft");
@@ -120,11 +93,11 @@ export default function Unit() {
         setToUnits([
           {
             value: "F",
-            display: "Fahrenheit",
+            display: "Fahrenheit (F)",
           },
           {
             value: "K",
-            display: "Kelvin",
+            display: "Kelvin (K)",
           },
         ]);
         setSelectedToUnit("F");
@@ -135,11 +108,11 @@ export default function Unit() {
         setToUnits([
           {
             value: "C",
-            display: "Celcius",
+            display: "Celcius (C)",
           },
           {
             value: "K",
-            display: "Kelvin",
+            display: "Kelvin (K)",
           },
         ]);
         setSelectedToUnit("C");
