@@ -66,9 +66,30 @@ export default function About() {
         <div>
           <CollapsableContent
             contentHeading="What does the Daily Calorie Calculator do?"
-            content="The tool calculates the daily calories required to maintain, 
-            lose or gain weight from your current measurements."
+            content="This calculator gives a rough estimate of daily calories required 
+            to maintain, lose or gain weight using body measurements and activity levels."
             uniqueId="collapsableCalorieDetails"
+          />
+        </div>
+        <div>
+          <CollapsableContent
+            contentHeading="How is the Daily Calorie Requirement Calculated?"
+            content="The formula used for calculating the daily calorie requirement follows
+            Mifflin and St Jeor's 1990 revision of the Harris–Benedict equations. The result
+            is then multiplied by a number determined by the activity factor. The more active
+            you are, the more calories are required to maintain, gain or lose weight."
+            uniqueId="collapsableCalorieFormula"
+          />
+        </div>
+        <div>
+          <CollapsableContent
+            contentHeading="Is the Daily Calorie Calculator accurate? What are its limitations?"
+            content="The calorie calculations do not attempt to take into account body 
+            composition, identical results can be calculated for a very muscular person, 
+            and an overweight person, who are both the same height, weight, age and gender. 
+            As muscle and fat require differing amounts of calories to maintain, 
+            the estimates will not be accurate for such cases."
+            uniqueId="collapsableCalorieLimitations"
           />
         </div>
       </div>
