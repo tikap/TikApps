@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { Button } from "@react-email/components";
 
 export default function Header() {
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function Header() {
               data-te-navbar-nav-ref
             >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="font-bold text-3xl block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -39,7 +40,7 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   TikApps
-                </Link>
+                </a>
               </li>
             </ul>
             <ul
@@ -49,7 +50,7 @@ export default function Header() {
               data-te-navbar-nav-ref
             >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -61,10 +62,10 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   Unit Converter
-                </Link>
+                </a>
               </li>
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -76,10 +77,10 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   BMI Calculator
-                </Link>
+                </a>
               </li>
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -91,7 +92,7 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   Daily Calorie Calculator
-                </Link>
+                </a>
               </li>
             </ul>
             <ul
@@ -99,7 +100,7 @@ export default function Header() {
               data-te-navbar-nav-ref
             >
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -111,10 +112,10 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   About
-                </Link>
+                </a>
               </li>
               <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
+                <a
                   className="block transition duration-150 ease-in-out 
                   hover:text-neutral-400 
                   focus:text-white 
@@ -126,7 +127,7 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
