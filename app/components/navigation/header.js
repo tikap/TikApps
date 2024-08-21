@@ -55,6 +55,21 @@ export default function Header() {
                   focus:text-white 
                   disabled:text-black/30 lg:p-2 
                   [&.active]:text-black/90"
+                  href="./unit"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Unit Converter
+                </Link>
+              </li>
+              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <Link
+                  className="block transition duration-150 ease-in-out 
+                  hover:text-neutral-400 
+                  focus:text-white 
+                  disabled:text-black/30 lg:p-2 
+                  [&.active]:text-black/90"
                   href="./bmi"
                   data-te-nav-link-ref
                   data-te-ripple-init
@@ -76,21 +91,6 @@ export default function Header() {
                   data-te-ripple-color="light"
                 >
                   Daily Calorie Calculator
-                </Link>
-              </li>
-              <li className="m-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <Link
-                  className="block transition duration-150 ease-in-out 
-                  hover:text-neutral-400 
-                  focus:text-white 
-                  disabled:text-black/30 lg:p-2 
-                  [&.active]:text-black/90"
-                  href="./unit"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Unit Converter
                 </Link>
               </li>
             </ul>
