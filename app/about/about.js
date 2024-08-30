@@ -22,7 +22,7 @@ export default function About() {
         </Link>
         <div>
           <CollapsableContent
-            contentHeading="This tool does not have a unit I want to convert, where can I request an addition of a new unit to convert?"
+            contentHeading="Where can I request an addition of a new unit to convert?"
             content="Please feel free to request an addition of a unit by sending the form in the Contact page."
             uniqueId="addUnitToUnitConverter"
           />
