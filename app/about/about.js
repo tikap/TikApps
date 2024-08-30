@@ -8,12 +8,27 @@ export default function About() {
         <div className="p-2">
           <h4 className="mb-6 text-xl font-semibold">About This Website</h4>
           <p className="my-5">
-            A web application with simple utilities that will help keep track of
-            your health. Feel free to explore and use the tools from the
-            navigation bar above. <br /> The current list of available tools and
-            their FAQ are given below:
+            A web application with simple calculators. Feel free to explore and
+            use the tools from the navigation bar above.
+            <br /> <br />
+            The current list of available calculators and their Frequenty Asked
+            Questions are given below:
           </p>
         </div>
+      </div>
+      <div className="space-y-4">
+        <Link id="UnitConverter" href="./unit" className="block font-semibold">
+          Unit Converter
+        </Link>
+        <div>
+          <CollapsableContent
+            contentHeading="This tool does not have a unit I want to convert, where can I request an addition of a new unit to convert?"
+            content="Please feel free to request an addition of a unit by sending the form in the Contact page."
+            uniqueId="addUnitToUnitConverter"
+          />
+        </div>
+      </div>
+      <div className="space-y-4">
         <Link
           id="BodyMassIndexCalculator"
           href="./bmi"

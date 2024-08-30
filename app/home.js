@@ -22,9 +22,7 @@ export default function Home() {
         <Image src={TikAppsLogo} alt="TikApps Logo" />
       </div>
       <h2 className="mb-4 text-4xl font-semibold">TikApps</h2>
-      <h4 className="mb-6 text-xl">
-        Free, easy and accessible tools for your life.
-      </h4>
+      <h4 className="mb-6 text-xl">Free, easy and accessible calculators.</h4>
 
       <Link href="./about">
         <button
